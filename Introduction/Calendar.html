@@ -1,20 +1,22 @@
 <!DOCTYPE html>
 <html>
-  <head>
-	<title>Calendar</title>
-	<script type="text/javascript" src="../KendoUI/js/jquery-2.2.4.js" ></script>
-	<script type="text/javascript" src="../KendoUI/js/kendo.web.js" ></script>
-	<link rel="stylesheet" type="text/css" href="../KendoUI/styles/kendo.common.patched.css">
-	<script type="text/javascript">
-	  $(document).ready(function () {
-	    $('#calendar').kendoCalendar({
-	      value: new Date()
-	    });
-	  });
-	</script>
-  </head>
-  <body>
-	<div id="calendar"></div>
-	<div id="info"></div>
-  </body>
+	<head>
+		<meta charset="utf-8">
+		<title>Calendar</title>
+		<script type="text/javascript" src="../KendoUI/js/jquery.min.js" ></script>
+		<script type="text/javascript" src="../KendoUI/js/kendo.web.min.js" ></script>
+		<link rel="stylesheet" type="text/css" href="../KendoUI/styles/kendo.common.min.css">
+		<link rel="stylesheet" type="text/css" href="../KendoUI/styles/kendo.default.min.css">
+	</head>
+	<body>
+		<div id="calendar"></div>
+		<div id="info"></div>
+		<script type="text/javascript">
+		  $(document).ready(function () {
+		    $('#calendar').kendoCalendar({
+		      value: new Date()
+		    });
+		  });
+		</script>
+	</body>
 </html>
