@@ -18,7 +18,10 @@
 		  $(document).ready(function () {
 		    require(['kendo.calendar'], function () {
 		      $('#calendar').kendoCalendar({
-		        value: new Date()
+		        value: new Date(),
+		        min: new Date(2011, 11, 10),
+		        //max: new Date(2013, 2, 5)
+		        start: "century"//"decade"//"year"//"month"
 		      });
 		    });
 		  });
