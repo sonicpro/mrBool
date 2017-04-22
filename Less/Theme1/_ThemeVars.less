@@ -1,0 +1,728 @@
+﻿// Typography
+// --------------------------------------------------
+
+@font-family-base: Arial;
+@font-size-base: 14px;
+@line-height-base: 100%;
+
+
+// Size and spacing
+// --------------------------------------------------
+@modal-narrow-width: 450px;
+@modal-normal-width: 600px;
+@modal-semi-wide-width: 800px;
+@modal-wide-width: 1000px;
+
+@modal-body-padding-x: 30px;
+@modal-body-padding-y: 20px;
+
+@modal-footer-padding-top: 10px;
+@modal-footer-padding-bottom: 20px;
+@modal-footer-padding-x: 30px;
+
+@modal-view-body-padding-x: 20px;
+@modal-view-body-padding-top: 15px;
+@modal-view-body-padding-bottom: 20px;
+
+@modal-view-footer-padding-top: 0px;
+@modal-view-footer-padding-bottom: 20px;
+@modal-view-footer-padding-x: 20px;
+
+.modal-body-paddings()
+{
+	padding: @modal-body-padding-y @modal-body-padding-x;
+}
+
+.modal-settings-body-paddings()
+{
+	padding: @modal-body-padding-y @modal-body-padding-x @modal-body-padding-y 20px;
+}
+
+.modal-view-body-paddings()
+{
+	padding: @modal-view-body-padding-top @modal-view-body-padding-x @modal-view-body-padding-bottom @modal-view-body-padding-x;
+}
+
+.modal-footer-paddings()
+{
+	padding: @modal-footer-padding-top @modal-footer-padding-x @modal-footer-padding-bottom;
+}
+
+.modal-view-footer-paddings()
+{
+	padding: @modal-view-footer-padding-top @modal-view-footer-padding-x @modal-view-footer-padding-bottom;
+}
+
+.modal-settings-footer-paddings()
+{
+	padding: @modal-footer-padding-top @modal-footer-padding-x @modal-footer-padding-bottom 20px;
+}
+
+
+@modal-narrow-contol-padding: 135px;
+@modal-normal-contol-padding: 175px;
+@modal-semi-wide-contol-padding: 175px;
+@modal-wide-contol-padding: 175px;
+
+@form-widget-row-indent-y			:10px;
+@form-label-to-control-indent-x		:10px;
+@form-with-hints-label-to-control-indent-x :25px;
+@form-control-to-control-indent-x	:20px;
+@form-widget-row-line-height		:100%;
+
+@feedback-line-height				:130%;
+
+@feedback-icon-left-indent			:2px;
+
+.button-default-size() {
+	min-width	:100px;
+	padding		:0 10px;
+}
+
+.button-primary-size() {
+	min-width	:130px;
+	padding		:0 10px;
+}
+
+.static-data-values-f(){
+	font-weight	:bold;
+}
+
+// COLOR IDs
+// --------------------------------------------------
+
+@app_bg				:#ffffff							 ;
+@bg_ro_menu			:#90a5c2							 ;
+@button_prim_bg		:#90a5c2							 ;
+.button_prim_f		()	{
+	// Arial Bold, size: 13 px
+	font-family:@font-family-base;
+	font-size:13px;
+	font-weight:bold;
+}
+
+@button_prim_fg		: #ffffff							 ;
+@button_ro_bg		: #065394							 ;
+@button_ro_b		: #065394							 ;
+@button_ro_fg		: #ffffff							 ;
+@cm_dis				: #999999							 ;
+@cm_error			: #e2001a							 ;
+@cm_access			: #ff9900							 ;
+@cm_info			: #00a1ef							 ;
+@cm_warning			: #fdc400							 ;
+@control_b			: #999999							 ;
+@control_bg			: #f0f0f0							 ;
+@control_dis_b		: #cccccc							 ;
+@control_dis_bg		: #ffffff							 ;
+@control_dis_fg		: #999999							 ;
+
+.control_f			(){
+	// Arial, size: 13 px
+	font-family:@font-family-base;
+	font-size:13px;
+}
+
+@control_fg			:#4b4b4b							 ;
+@control_off_bg		:#cccccc							 ;
+@control_on_bg		:#88bf67							 ;
+
+@control_header_bg	:#f0f0f0							 ;
+@control_header_b	:#4b4b4b							 ;
+
+.control_header_f			(){
+	// Arial, size: 12 px
+	font-family:@font-family-base;
+	font-size:12px;
+}
+
+.hint_f				() {
+	// Arial Italic, size: 13 px
+	font-family:@font-family-base;
+	font-size:13px;
+	font-style:italic;
+}
+
+@stacked_label_fg	:#999999							 ;
+@stacked_value_fg	:#333333							 ;
+
+.stacked_label_f	() {
+	// Arial, size: 12 px, lowercase
+	font-family:@font-family-base;
+	font-size:12px;
+	text-transform: lowercase;
+	color: @stacked_label_fg;
+}
+
+.stacked_value_f	() {
+	// Arial, size: 14 px
+	font-family:@font-family-base;
+	font-size:14px;
+	color: @stacked_value_fg;
+}
+
+.stacked_value_en_f() {
+	font-family:@font-family-base;
+	font-size:16px;
+}
+
+.stacked_value_status_f() {
+	font-family:@font-family-base;
+	font-size:14px;
+	font-weight:bold;
+}
+
+@stacked_value_status_fg: #e2001a;
+
+@stacked_value_highlight_fg: #fff;
+
+@stacked_value_pos_bg: #339847;
+@stacked_value_neu_bg: #fdc400;
+@stacked_value_neg_bg: #e2001a;
+
+@hint_fg			:#999999							 ;
+@item_header_bg		:#999999							 ;
+
+.item_label_f		() {
+	// Arial Bold, All Caps, size: 11 px
+	font-family:@font-family-base;
+	text-transform:uppercase;
+	font-size:11px;
+	font-weight:bold;
+}
+
+.item_label_f36() {
+	// Arial, size: 36px
+	font-family:@font-family-base;
+	font-size: 36px;
+}
+
+.item_label_f24() {
+	font-family:@font-family-base;
+	font-size: 24px;
+}
+
+@item_label_fg		:#ffffff							 ;
+@item_b				:#999999							 ;
+@item_bg			:#ffffff							 ;
+
+.item_f() {
+	// Arial, size: 13 px
+	font-family:@font-family-base;
+	font-size:13px;
+}
+.item_f_bold() {
+	// Arial, size: 13 px
+	.item_f();
+	font-weight: bold;
+}
+.item_f14_caps() {
+	// Arial, All Caps, size: 14 px
+	font-family:@font-family-base;
+	font-size: 14px;
+	text-transform: uppercase;
+}
+
+.item_f14_bold_italic() {
+	font-family:@font-family-base;
+	font-style: italic;
+	font-weight: bold;
+	font-size: 14px;
+}
+
+@item_fg			:#4b4b4b							 ;
+@link_fg			:#065394							 ;
+
+.menu_f() {
+	// Arial, size: 13 px
+	font-family:@font-family-base;
+	font-size:13px;
+}
+
+@menu_fg			:#ffffff							 ;
+.menu2_f(){
+	// Arial, size: 13 px
+	font-family:@font-family-base;
+	font-size:13px;
+}
+.message_f(){
+	// Arial Italic, size: 13 px
+	font-family:@font-family-base;
+	font-style:italic;
+	font-size:13px;
+}
+@navbar_bg			:#065394							 ;
+@page_d				:#999999							 ;
+.page_f(){
+	// Arial Bold, All Caps  size: 17 px
+	font-family:@font-family-base;
+	font-weight:bold;
+	text-transform:uppercase;
+	font-size:17px;
+}
+@page_fg			:#f58024							 ;
+@rbutton_b			:#90a5c2							 ;
+@submenu_b			:#cccccc							 ;
+@submenu_bg			:#ffffff							 ;
+@submenu_d			:#dcdcdc							 ;
+.submenu_f			() {
+	// Arial, size: 13 px
+	font-family:@font-family-base;
+	font-size:13px;
+}
+@submenu_fg			:#4b4b4b							 ;
+@submenu_ro_bg		:#90a5c2							 ;
+@submenu_ro_fg		:#ffffff							 ;
+@table_activline_bg	:#d3dbe7							 ;
+//@table_activline_fg	:#—								 ;
+@table_bg			:#ffffff							 ;
+@table_d			:#cccccc							 ;
+@table_fg			:#4b4b4b							 ;
+.table_footer_f		() {
+	// Arial, size: 12 px
+	font-family:@font-family-base;
+	font-size:12px;
+}
+@table_footer_fg	:#ffffff							 ;
+@table_header_bg	:#c0c0c0							 ;
+@table_header_d		:#ffffff							 ;
+.table_header_f		(){
+	// Arial, All Caps, size: 11 px
+	font-family:@font-family-base;
+	font-size:11px;
+	text-transform:uppercase;
+}
+@table_header_fg	:#4b4b4b							 ;
+.value_f			(){
+	// Arial, size: 13 px
+	font-family:@font-family-base;
+	font-size:13px;
+}
+
+// focused element highlighting
+@widget_outline_color:#4d90fe							 ;
+@widget_shadow_color :#bebebe							 ;
+.widget_focus (){
+	-ms-outline-offset: -1px;
+	outline-offset: -1px;
+	outline: 1px solid @widget_outline_color;
+	-webkit-box-shadow: @widget_shadow_color 0px 0px 10px;
+	-ms-box-shadow: @widget_shadow_color 0px 0px 10px;
+	box-shadow: @widget_shadow_color 0px 0px 10px;
+}
+
+@overlay-background-color: rgba(0,0,0, 0.5);
+@service_pro_bg: #f0f0f0;
+
+// common
+
+.FontGenerator(@fontColor, @fontSize)
+{
+	font-family: @font-family-base;
+	font-size: @fontSize;
+	color: @fontColor;
+}
+
+.FontGenerator(@fontColor) when (iscolor(@fontColor))
+{
+	.FontGenerator(@fontColor, 13px);
+}
+
+.FontGenerator(@fontSize) when (ispixel(@fontSize))
+{
+	.FontGenerator(#fff, @fontSize);
+}
+
+//---------
+
+// application
+
+@ApplicationBackgroundColor: #f2f2f2; // bg_app
+
+//---------
+
+// navigation bar
+
+@NavbarBackgroundColor: #0a5393; // bg_ro_menu
+
+@NavbarHoverBackgroundColor: #90a5c2; // bg_ro_menu
+
+.NavbarBackground()
+{
+	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAOwgAADsIBFShKgAAAABp0RVh0U29mdHdhcmUAUGFpbnQuTkVUIHYzLjUuMTFH80I3AAAADUlEQVQYV2MQD5j6GQADbgHwOdkl1wAAAABJRU5ErkJggg==); // bg_navbar
+}
+
+.NavbarHoverBackground()
+{
+	background-color: @NavbarHoverBackgroundColor;
+}
+
+.NavbarFont()
+{
+	.FontGenerator(13px); // f_menu
+	font-weight: bold; // fg_menu
+}
+
+.readonly_label_f()
+{
+	.NavbarFont;
+	font-weight: bold;
+	color: @hint_fg;
+}
+
+.NavbarMoreAndUsernameFont()
+{
+	.FontGenerator(13px); // f_menu2, fg_menu
+	font-weight: normal;
+}
+
+.CommonShadow()
+{
+	-moz-box-shadow:	0px 0px 5px 1px #000000;
+	-moz-box-shadow:	0px 0px 5px 1px rgba(0, 0, 0, 0.2);
+	-webkit-box-shadow:	0px 0px 5px 1px #000000;
+	-webkit-box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.2);
+	-ms-box-shadow:		0px 0px 5px 1px #000000;
+	-ms-box-shadow:		0px 0px 5px 1px rgba(0, 0, 0, 0.2);
+	box-shadow:			0px 0px 5px 1px #000000;
+	box-shadow:			0px 0px 5px 1px rgba(0, 0, 0, 0.2);
+}
+
+//---------
+
+// submenu
+
+@NavbarSubmenuDividerColor: #dcdcdc; // d_submenu NOTE: currently not used
+@NavbarSubmenuHoverTextColor: #fff; // fg_ro_submenu
+@NavbarSubmenuHoverBackgroundColor: #d3dbe7; // bg_activeline_table
+
+.NavbarSubmenu()
+{
+	background-color: @submenu_bg; // bg_submenu
+	border-width:1px;
+	border-style:solid;
+	border-color: @submenu_b; // b_submenu
+	.FontGenerator(#4b4b4b); // f_submenu, fg_submenu
+}
+
+.NavbarSubmenuHoverBackground()
+{
+	background-color: #90a5c2; // bg_ro_submenu
+}
+
+.NavbarSubmenuHoverTextColor()
+{
+	color: @NavbarSubmenuHoverTextColor;
+}
+
+.NavbarSubmenuHoverBackgroundColor()
+{
+	color: @NavbarSubmenuHoverTextColor;
+}
+
+//----------
+
+// page header
+
+@PageHeaderDivider: #999; // d_page
+
+.PageHeaderDivider()
+{
+	float: none;
+	clear: both;
+	height: 0;
+	border-bottom: 1px solid @PageHeaderDivider;
+}
+
+.PageHeaderFont()
+{
+	.FontGenerator(#fff, 17px); // f_page, fg_page
+	font-weight: bold; // f_page
+	text-transform: uppercase; // f_page
+}
+
+//----------
+
+// page item NOTE: currently not used
+
+@PageItemDropdownBackgroundColor: #dcdcdc; // bg_box
+
+@PageItemInfoMesageColor: #00a1ef; // cm_info TODO: can't find it on the mockup
+
+@PageItemWarningMesageColor: #fdc400; // cm_wrning TODO: can't find it on the mockup
+
+@PageItemErrorMesageColor: #e2001a; // cm_error TODO: can't find it on the mockup
+
+.PageItemLabelFont()
+{
+	.FontGenerator(#4b4b4b); // fg_item, f_item
+}
+
+.PageItemValueFont()
+{
+	.PageItemLabelFont(); // f_value, fg_value
+	font-weight: bold;
+}
+
+.PageItemHintFont()
+{ //TODO: can't find it on the mockup
+	.FontGenerator(#a0a0a0); // f_hint box, fg_hint box
+}
+
+.PageItemMessageFont()
+{ //TODO: can't find it on the mockup
+	.FontGenerator(#4b4b4b, 11px); // f_message, fg_item
+}
+
+//----------
+
+// table
+
+@TableBorderColor: #999; // b_item
+
+@TableHeaderBackgroundColor: #999; // bg_item
+
+@TableBackgroundColor: #fff; // bg_table NOTE: currently not used
+
+@TableRowBorderColor: #ccc; // d_table
+
+.TableBorder()
+{
+	border: 2px solid @TableBorderColor; // b_item
+}
+
+.TableRowBorder()
+{
+	border-bottom: 1px solid @TableRowBorderColor;
+}
+
+.TableHeaderBackground()
+{
+	background-color: @TableHeaderBackgroundColor;
+}
+
+.TableHeaderFont()
+{
+	.FontGenerator(11px); // f_label_item
+	font-weight: bold; // f_label_item
+	text-transform: uppercase; // f_label_item
+}
+
+.TableRowFont()
+{
+	.FontGenerator(#4b4b4b); // f_item, fg_table
+}
+
+.TableFooterFont()
+{ // NOTE: not used at the moment
+	.FontGenerator(#fff, 11px); // f_item, fg_table
+}
+
+.TableColumnHeaderFont()
+{
+	.TableFooterFont(); // fg_header_table, f_header_table
+	text-transform: uppercase; // f_header_table
+}
+
+//----------
+
+// action button NOTE: not currently used
+
+@ActionButtonBackgroundColorNormal: #90a5c2; // bg_norm_button
+
+@ActionButtonBackgroundColorHover: #65394; // bg_ro_button
+
+@ActionButtonFontColorHover: #fff; // fg_ro_button
+
+.ActionButtonFont()
+{
+	.FontGenerator(13px); // f_button, fg_button
+	font-weight: bold; // f_button
+}
+
+//----------
+
+// dial widget
+
+@dial_fg:		#4b4b4b;
+@grey_dial_fg:	#ccc;
+
+.dial_large_f(){
+	.FontGenerator(@item_fg, 24px);
+	text-transform: uppercase;
+	font-weight: normal;
+}
+.dial_small_f(){
+	.FontGenerator(@item_fg, 14px);
+	text-transform: uppercase;
+	font-weight: normal;
+}
+
+//----------
+
+// numeric element widget
+
+@number_neutral_fg:		#90a5c2;
+@number_fg:				#fff;
+@good_box_bg:			#339847;
+@negative_box_bg:		#e2001a;
+@medium_box_bg:			#fdc400;
+
+.number_large_f(){
+	.FontGenerator(@number_neutral_fg, 40px);
+	font-weight: bold;
+}
+.number_small_f(){
+	.FontGenerator(@number_neutral_fg, 24px);
+	font-weight: bold;
+}
+
+//----------
+@no-image-bg: #cbcccc;
+
+// mixins
+// --------------------------------------------------
+
+.no-image-background(@dimensions: 100px)
+{
+	background: @no-image-bg url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE5LjIuMSwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IgoJIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCAxMDAgMTAwOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+CjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+Cgkuc3Qwe2ZpbGw6I0NCQ0NDQzt9Cgkuc3Qxe2ZpbGw6I0ZGRkZGRjt9Cjwvc3R5bGU+Cjxwb2x5Z29uIGNsYXNzPSJzdDAiIHBvaW50cz0iOTkuMywwIDAuNywwIDUwLDQ5LjMgIi8+Cjxwb2x5Z29uIGNsYXNzPSJzdDAiIHBvaW50cz0iMTAwLDk5LjMgMTAwLDAuNyA1MC43LDUwICIvPgo8cG9seWdvbiBjbGFzcz0ic3QwIiBwb2ludHM9IjAsMC43IDAsOTkuMyA0OS4zLDUwICIvPgo8cG9seWdvbiBjbGFzcz0ic3QwIiBwb2ludHM9IjAuNywxMDAgOTkuMywxMDAgNTAsNTAuNyAiLz4KPHBvbHlnb24gY2xhc3M9InN0MSIgcG9pbnRzPSIxMDAsOTkuMyA1MC43LDUwIDUwLDUwLjcgOTkuMywxMDAgMTAwLDEwMCAiLz4KPHBvbHlnb24gY2xhc3M9InN0MSIgcG9pbnRzPSI1MCw0OS4zIDAuNywwIDAsMCAwLDAuNyA0OS4zLDUwICIvPgo8cG9seWdvbiBjbGFzcz0ic3QxIiBwb2ludHM9IjUwLjcsNTAgMTAwLDAuNyAxMDAsMCA5OS4zLDAgNTAsNDkuMyAiLz4KPHBvbHlnb24gY2xhc3M9InN0MSIgcG9pbnRzPSI0OS4zLDUwIDAsOTkuMyAwLDEwMCAwLjcsMTAwIDUwLDUwLjcgIi8+CjxyZWN0IHg9IjQ5LjUiIHk9IjQ5LjUiIHRyYW5zZm9ybT0ibWF0cml4KDAuNzA3MSAtMC43MDcxIDAuNzA3MSAwLjcwNzEgLTIwLjcxMDYgNDkuOTk5OCkiIGNsYXNzPSJzdDEiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiLz4KPC9zdmc+Cg==') no-repeat center center;
+	width: @dimensions;
+	height: @dimensions;
+}
+
+.wrapped()
+{
+	white-space: pre;
+	white-space: pre-wrap;
+	white-space: pre-line;
+	white-space: -pre-wrap;
+	white-space: -o-pre-wrap;
+	white-space: -moz-pre-wrap;
+	white-space: -hp-pre-wrap;
+	-ms-word-wrap: break-word;
+	word-wrap: break-word;
+}
+
+.column-count(@count)
+{
+	-webkit-column-count: @count;
+	-moz-column-count: @count;
+	-ms-column-count: @count;
+	-o-column-count: @count;
+	column-count: @count;
+}
+
+.vertical-align()
+{
+	position: relative;
+	top: 50%;
+	-webkit-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	-moz-transform: translateY(-50%);
+	-o-transform: translateY(-50%);
+	transform: translateY(-50%);
+}
+
+.tabbar_label_f()
+{
+	font-family: Arial;
+	font-size: 13px;
+	text-transform: uppercase;
+}
+
+@tab_ro_fg: #ffffff;
+@tab_ro_bg: #90a5c2;
+@tab_dis_fg: #999999;
+@tab_of_bg: #f0f0f0;
+
+// * LOGIN PAGE */
+@login-header-height: 35px;
+
+@login_header_bg:	#8fa4c1;
+@login_item_fg:		#333333;
+@login_value_fg:	#4b4b4b;
+@login_item_b:		#999999;
+@login_button_fg:	#ffffff;
+@login_button_bg:	#f58024;
+@login_footer_fg:	#999999;
+@login_color_fg:	#065394;
+@login_gray_fg:		#4b4b4b;
+
+.login_item_f16(){
+	font-family: Arial;
+	font-size:16px;
+}
+
+.login_item_f28(){
+	font-family: Arial;
+	font-size:28px;
+	text-transform: uppercase;
+}
+
+.login_item_f14(){
+	font-family: Arial;
+	font-size:14px;
+}
+
+.login_item_f18(){
+	//Arial Bold, size: 13 pt / 18 px
+	font-family: Arial;
+	font-size:18px;
+	font-weight:bold;
+}
+
+.login_item_f12(){
+	// Arial, size: 9 pt / 12px
+	font-family: Arial;
+	font-size:12px;
+}
+
+.login_link_f15(){
+	// Arial Underlined, size: 11 pt / 15 px
+	font-family: Arial;
+	font-size:15px;
+	text-decoration:underline;
+	line-height:normal
+}
+
+.login_link_f12(){
+	// Arial Underlined, size: 9 pt / 12 px
+	font-family: Arial;
+	font-size:12px;
+	text-decoration:underline
+}
+
+.login_item_f15(){
+	// Arial, size: 11 pt / 15px
+	font-family: Arial;
+	font-size:15px;
+}
+
+.login_italic_f15(){
+	// Arial italic, size: 11 pt / 15px
+	font-family: Arial;
+	font-size:15px;
+	font-style:italic;
+}
+
+.login_caps_f18(){
+	// Arial, All CAPS size: 13 pt / 18px
+	font-family: Arial;
+	font-size:18px;
+	text-transform: uppercase;
+}
+
+.login_caps_f24(){
+	// Arial, All CAPS size: 18 pt / 24 px
+	font-family: Arial;
+	font-size:24px;
+	text-transform: uppercase;
+}
+
+.login_caps_f28(){
+	// Arial, All CAPS size: 18 pt / 28 px
+	font-family: Arial;
+	font-size:28px;
+	text-transform: uppercase;
+}
+
+// * */

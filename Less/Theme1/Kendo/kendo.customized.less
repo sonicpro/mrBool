@@ -1,0 +1,783 @@
+﻿@import '../_ThemeVars.less';
+@import 'kendo.vars.less';
+
+.k-widget
+{
+	.control_f;
+	color: @control_fg;
+	border-color: @control_bg;
+	padding: 0;
+
+	.k-input
+	{
+		color: @control_fg;
+		background-color: @control_bg;
+	}
+
+	.k-dropdown-wrap
+	{
+		background-color: @control_bg;
+		border-color: @control_bg;
+		height: 25px;
+		margin-right: 1px;
+
+		&.k-state-hover .k-input
+		{
+			color: @control_fg;
+		}
+
+		.k-input
+		{
+			background-color: @control_bg;
+			height: 20px;
+		}
+	}
+
+	&.k-upload
+	{
+		border: none;
+
+		&.with-hidden-status
+		{
+			.k-dropzone .k-upload-status
+			{
+				display: none;
+			}
+		}
+
+		.k-dropzone
+		{
+			padding: 0;
+			height: 27px;
+			overflow: hidden;
+
+			.k-upload-status
+			{
+				line-height: normal;
+				right: 3px;
+				top: 13px;
+
+				.k-i-tick
+				{
+					margin-left: 5px;
+				}
+			}
+
+			.k-upload-status-total
+			{
+				font-weight: normal;
+			}
+
+			em
+			{
+				font-size: 11px;
+			}
+
+			&.k-dropzone-active
+			{
+				.k-upload-status
+				{
+					display: none;
+				}
+			}
+		}
+
+		.file-types-support
+		{
+			display: inline-block;
+			line-height: 120%;
+			font-size: 10px;
+			margin: 3px 0;
+		}
+
+		.k-upload-button
+		{
+			position: relative;
+			.button_prim_f;
+			padding: 0 11px;
+			height: 27px;
+			line-height: 25px;
+			margin-left: 0;
+			color: #4B4B4B;
+			background-color: #F0F0F0;
+			border-color: #999;
+			font-weight: normal;
+			-webkit-box-shadow: none !important;
+			box-shadow: none !important;
+
+			&.k-state-focused,
+			&:hover
+			{
+				-webkit-box-shadow: none !important;
+				box-shadow: none !important;
+			}
+
+			span
+			{
+				height: 26px;
+				display: inline-block;
+			}
+		}
+
+		.k-upload-files
+		{
+			line-height: 20px;
+			border-color: transparent;
+
+			.k-upload-status
+			{
+				top: 3px;
+				right: 8px;
+			}
+
+			.k-file
+			{
+				background-color: @control_bg;
+				border-color: transparent;
+				margin-bottom: 2px;
+				padding: 2px 10px;
+
+				> .k-icon
+				{
+					display: none;
+				}
+
+				.k-filename
+				{
+					margin-left: 0;
+					max-width: 13em;
+					min-width: 1em;
+				}
+
+				.k-upload-pct
+				{
+					font-weight: normal;
+				}
+
+				&.k-file-progress
+				{
+					.k-filename,
+					.k-upload-status
+					{
+						color: @control_fg;
+					}
+				}
+
+				.k-progress
+				{
+					-moz-transition: width 500ms;
+					-o-transition: width 500ms;
+					-webkit-transition: width 500ms;
+					transition: width 500ms;
+				}
+
+				&.k-file-error.k-file-success
+				{
+					background-color: @control_on_bg;
+					color: @item_label_fg;
+
+					.k-progress
+					{
+						background-color: @control_on_bg;
+					}
+
+					.k-filename,
+					.k-upload-status
+					{
+						color: @item_label_fg;
+					}
+				}
+
+				&.k-file-invalid {
+					.k-file-invalid
+					{
+						background-color: @cm_error
+					}
+
+					.k-file-invalid-extension-wrapper
+					{
+						border-color: @cm_error;
+					}
+
+					.k-file-invalid-extension-wrapper,
+					.k-file-name-invalid,
+					.k-file-validation-message{
+						color: @cm_error;
+					}
+				}
+			}
+		}
+	}
+
+	&.k-calendar
+	{
+		.submenu_f();
+
+		.k-content
+		{
+			thead th
+			{
+				color: @submenu_fg;
+				text-align: right;
+				border-bottom-color: transparent;
+				border-top: 1px solid #cdcdcd;
+			}
+
+			.k-other-month
+			{
+				color: @hint_fg;
+			}
+		}
+
+		.k-footer
+		{
+			border-top: 1px solid #cdcdcd;
+		}
+	}
+	/*.k-picker-wrap
+	{
+		.k-input
+		{
+			height: 21px;
+		}
+
+		.k-select
+		{
+			line-height: 1.6922em;
+		}
+	}*/
+	&.k-datetimepicker,
+	&.k-timepicker,
+	&.k-datepicker
+	{
+		.k-picker-wrap
+		{
+			height: 25px; // + borders 2px
+			.k-input
+			{
+				height: 20px;
+			}
+
+			.k-select
+			{
+				line-height: 1.6922em;
+			}
+		}
+	}
+
+	&.k-multiselect.k-header
+	{
+		border-width: 1px 0 1px 0;
+	}
+
+	.k-multiselect-wrap
+	{
+		min-height: 25px;
+
+		>.k-icon.k-i-close 
+		{
+			display: none;
+		}
+
+		input.k-input.k-readonly
+		{
+			line-height: 1.7em;
+			height: 23px;
+			padding: 0;
+		}
+
+		li
+		{
+			.button_prim_f;
+			padding: 0 22px 0 10px;
+			margin: 0 1px 1px 0;
+			text-align: left;
+			position: relative;
+			min-width: 140px;
+			height: 24px;
+			line-height: 23px;
+
+			&.k-button
+			{
+				white-space: nowrap;
+				overflow: hidden;
+				-moz-text-overflow: ellipsis;
+				-ms-text-overflow: ellipsis;
+				-o-text-overflow: ellipsis;
+				text-overflow: ellipsis;
+				min-width: 32.9%;
+				max-width: 32.9%;
+			}
+
+			.k-icon
+			{
+				position: absolute;
+				right: 0;
+				top: 4px;
+			}
+		}
+	}
+
+	&.k-multiselect.two-column-multiselect li.k-button
+	{
+		min-width: 49.7%;
+		max-width: 49.7%;
+	}
+
+	&.k-multiselect.one-row-multiselect-with-autocomplete li.k-button
+	{
+		min-width: 65%;
+		max-width: 65%;
+	}
+
+	// Disabled
+	&.k-multiselect.k-state-disabled
+	{
+		border-color: @control_dis_b;
+		border-width: 1px;
+	}
+
+	&.k-state-disabled,
+	.k-state-disabled
+	{
+		background-color: @control_dis_bg;
+		border-color: @control_dis_b;
+
+		.k-input,
+		&.k-input
+		{
+			background-color: @control_dis_bg;
+			color: @control_dis_fg;
+		}
+
+		.k-multiselect-wrap
+		{
+			background-color: @control_dis_bg;
+			color: @control_dis_fg;
+		}
+	}
+
+	.k-select
+	{
+		border-color: transparent;
+	}
+	//Editor
+	.k-editor-toolbar
+	{
+		line-height: 30px;
+		margin-bottom: 8px;
+		//http://www.telerik.com/forums/hiding-tools-in-the-toolbar-is-confusing-for-users
+		li,
+		.k-button-group
+		{
+			.k-state-disabled
+			{
+				display: inline-block;
+			}
+
+			.k-state-disabled-corrigo
+			{
+				display: inline-block;
+				filter: alpha(opacity=30);
+				opacity: .3;
+				cursor: default;
+
+				&.k-state-hover
+				{
+					background-color: transparent;
+					border-color: @control_dis_b;
+
+					.k-i-corrigo-undo
+					{
+						background-position: -192px -192px;
+						//background-image: url(Default/sprite.png);
+					}
+
+					.k-i-corrigo-redo
+					{
+						background-position: -192px -216px;
+						//background-image: url(Default/sprite.png);
+					}
+				}
+			}
+		}
+
+		.k-picker-wrap
+		{
+			line-height: 23px;
+		}
+
+		.k-combobox,
+		.k-colorpicker
+		{
+			//vertical-align:top
+		}
+	}
+
+	&.k-editor-widget
+	{
+		border: none;
+		border-spacing: 0;
+
+		.k-editable-area
+		{
+			border-color: @control_bg;
+		}
+	}
+	// Custom Icons
+	// --------------------------------------------------
+	/*removed opacity from icons*/
+	.k-icon
+	{
+		opacity: 1;
+	}
+	// Editor
+	.k-i-viewsource
+	{
+		background-position: -288px -120px;
+	}
+
+	.k-i-corrigo-undo
+	{
+		background-position: -192px -192px;
+		background-image: url(Default/sprite.png);
+	}
+
+	.k-i-corrigo-redo
+	{
+		background-position: -192px -216px;
+		background-image: url(Default/sprite.png);
+	}
+
+	.k-state-hover
+	{
+		.k-i-corrigo-undo
+		{
+			background-position: -216px -192px;
+		}
+
+		.k-i-corrigo-redo
+		{
+			background-position: -216px -216px;
+		}
+	}
+	// Combobox
+	&.k-combobox,
+	&.k-dropdown,
+	&.k-colorpicker,
+	&.k-colorpicker
+	{
+		& > .k-state-disabled .k-i-arrow-s
+		{
+			background-position: 0px -34px;
+		}
+
+		.k-i-arrow-s
+		{
+			background-position: -80px -34px;
+		}
+
+		& > :not(.k-state-disabled) .k-i-arrow-s:hover,
+		.k-state-active .k-i-arrow-s
+		{
+			background-position: -64px -34px;
+		}
+	}
+	// Grid
+	&.k-grid
+	{
+		// NAVIGATION
+		// first page
+		.k-i-seek-w
+		{
+			background-position: -16px -112px;
+		}
+		// first page hover
+		.k-link:not(.k-state-disabled):hover > .k-i-seek-w
+		{
+			background-position: -64px -112px;
+		}
+		// previous page
+		.k-i-arrow-w
+		{
+			background-position: -16px -48px;
+		}
+		// previous hover
+		.k-link:not(.k-state-disabled):hover > .k-i-arrow-w
+		{
+			background-position: -64px -48px;
+		}
+		// next page
+		.k-i-arrow-e
+		{
+			background-position: -16px -16px;
+		}
+		// next page hover
+		.k-link:not(.k-state-disabled):hover > .k-i-arrow-e
+		{
+			background-position: -64px -16px;
+		}
+		// last page
+		.k-i-seek-e
+		{
+			background-position: -16px -80px;
+		}
+		// last page hover
+		.k-link:not(.k-state-disabled):hover > .k-i-seek-e
+		{
+			background-position: -64px -80px;
+		}
+		// PAGER
+		// size
+		.k-pager-sizes
+		{
+			.k-i-arrow-s
+			{
+				background-position: -16px -32px;
+			}
+
+			.k-state-active > * > .k-i-arrow-s,
+			.k-state-hover > * > .k-i-arrow-s
+			{
+				background-position: -64px -32px;
+			}
+
+			.k-select
+			{
+				line-height: 1.54em;
+			}
+		}
+		// refresh
+		.k-pager-refresh
+		{
+			.k-i-refresh
+			{
+				background-position: -48px -112px;
+			}
+
+			&:not(.k-state-disabled):hover .k-i-refresh
+			{
+				background-position: -80px -112px;
+			}
+		}
+		// SORT
+		// down
+		.k-i-arrow-s
+		{
+			background-position: -16px -33px;
+		}
+		// down hover
+		.k-link:hover .k-i-arrow-s
+		{
+			background-position: -64px -33px;
+		}
+		// up
+		.k-i-arrow-n
+		{
+			background-position: -16px 0px;
+		}
+
+		.k-link:hover .k-i-arrow-n
+		{
+			background-position: -64px 0px;
+		}
+
+		.k-grid-filter:hover
+		{
+
+			.k-filter
+			{
+				background-position: -48px -80px;
+			}
+		}
+	}
+	// Disabled Icons
+	.k-state-disabled
+	{
+		// first page
+		.k-i-seek-w
+		{
+			background-position: 0px -112px;
+		}
+		// previous page
+		.k-i-arrow-w
+		{
+			background-position: 0px -48px;
+		}
+		// next page
+		.k-i-arrow-e
+		{
+			background-position: 0px -16px;
+		}
+		// last page
+		.k-i-seek-e
+		{
+			background-position: 0 -80px;
+		}
+
+		.k-i-calendar,
+		.k-i-calendar:hover
+		{
+			background-position: -32px -176px;
+		}
+
+		.k-i-clock,
+		.k-i-clock:hover
+		{
+			background-position: -32px -192px;
+		}
+	}
+	// Calendar & Clock
+	.k-i-calendar
+	{
+		background-position: -48px -176px;
+
+		&:hover
+		{
+			background-position: -64px -176px;
+		}
+	}
+
+	.k-i-clock
+	{
+		background-position: -48px -192px;
+
+		&:hover
+		{
+			background-position: -64px -192px;
+		}
+	}
+}
+// end .k-widget
+
+.k-header.k-drag-clue
+{
+	text-transform: uppercase;
+	.FontGenerator(#B0B0B0, 11px)
+}
+
+.k-ff .k-picker-wrap .k-input
+{
+	height: 20px;
+}
+
+.k-calendar .k-footer .k-nav-today:hover,
+.k-calendar .k-footer .k-nav-today.k-state-hover
+{
+	color: #fff;
+}
+
+.k-calendar-container
+{
+
+	.k-calendar
+	{
+		.k-link.k-nav-fast
+		{
+			margin: 2px 0;
+		}
+
+		.k-footer
+		{
+			padding-top: 2px;
+			top: 1px;
+		}
+	}
+}
+
+.k-list-container.k-popup
+{
+	.submenu_f;
+	border-color: @submenu_b;
+	background-color: @submenu_bg;
+	color: @submenu_fg;
+
+	.k-list .k-item
+	{
+		white-space: nowrap;
+		overflow-x: hidden;
+		-ms-text-overflow: ellipsis;
+		-o-text-overflow: ellipsis;
+		text-overflow: ellipsis;
+		.submenu_f();
+		color: @submenu_fg;
+	}
+}
+
+.k-input
+{
+	&::-webkit-input-placeholder
+	{
+		line-height: 18px;
+	}
+
+	&:-ms-input-placeholder
+	{
+		line-height: 21px;
+	}
+
+	&:-moz-placeholder
+	{
+		line-height: 21px;
+	}
+
+	&::-moz-placeholder
+	{
+		line-height: 21px;
+	}
+}
+
+// outline highlighting for focused elements
+.corrigo-select-from-dialog > input:focus,
+input.corrigo-text-field:focus,
+textarea.corrigo-text-block:focus,
+.k-widget.corrigo-autocomplete input.k-input:focus,
+.k-textbox:focus,
+.k-widget.k-numerictextbox input.k-input:focus,
+.k-widget.k-datepicker > .k-picker-wrap.k-state-focused,
+.k-widget.k-timepicker > .k-picker-wrap.k-state-focused,
+.k-widget.k-datetimepicker > .k-picker-wrap.k-state-focused,
+.k-widget.k-dropdown > .k-dropdown-wrap.k-state-focused,
+.k-widget.k-multiselect.k-state-focused > .k-multiselect-wrap
+{
+	.widget_focus();
+}
+
+// let's remove highlighting from grid's headers
+.k-grid-header .k-header a:focus
+{
+	outline: 0;
+	text-decoration: none;
+}
+
+.k-button:hover,
+.k-state-hover .k-button.k-state-hover
+{
+	//INFO: the following 3 variables are from kedno.vars.less but are not used originally.
+	color: @button-hover-text-color;
+	border-color: @button-hover-border-color;
+	background-color: @button-hover-background-color;
+}
+
+// override styles from kendo.template.less
+.k-list > .k-state-selected {
+	color: @submenu_fg;
+	background-color: @table_activline_bg;
+	border-color: transparent;
+
+	// for kendo's multiselect 
+	// that seems to be the only place where sych combination is possible
+	&.k-state-focused
+	{
+		border-color: #90a5c2;
+		-moz-box-shadow: #90a5c2 0px 0px 0px 1px inset !important;
+		-webkit-box-shadow: #90a5c2 0px 0px 0px 1px inset !important;
+		box-shadow: #90a5c2 0px 0px 0px 1px inset !important;
+	}
+}
+
+.k-dropdown .k-state-hover .k-input,
+.k-dropdown:hover .k-state-hover span.k-input
+{
+	color: @drop-down-text-color;
+}
