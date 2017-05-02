@@ -8,22 +8,32 @@
 		<script type="text/javascript" src="../js/jquery/jquery-2.2.4.js"></script>
 		<script type="text/javascript" src="../js/Kendo/web/kendo.calendar.js"></script>
 		<script type="text/javascript" src="../js/Kendo/web/kendo.core.patched.js"></script>
+		<script type="text/javascript" src="../js/helpers/assert.js"></script>
 		<link rel="stylesheet" type="text/css" href="../styles/kendo.common.patched.css">
 		<link rel="stylesheet" type="text/css" href="../Less/Theme1/Kendo/kendo.template.css">
-		<link rel="stylesheet" type="text/css" href="../Less/Theme1/Kendo/kendo.customized.css">		
+		<link rel="stylesheet" type="text/css" href="../Less/Theme1/Kendo/kendo.customized.css">
+		<link rel="stylesheet" type="text/css" href="../styles/assert.css">
 	</head>
 	<body>
 		<div id="calendar"></div>
-		<div id="info"></div>
+		<ul id="info"></ul>
 		<script type="text/javascript">
 		  $(document).ready(function () {
 		    require(['kendo.calendar'], function () {
 		      $('#calendar').kendoCalendar({
-		        value: new Date(),
-		        min: new Date(2011, 11, 10),
-		        //max: new Date(2013, 2, 5)
-		        start: "century"//"decade"//"year"//"month"
+		        // value: new Date(),
+		        // min: new Date(2011, 11, 10),
+		        // max: new Date(2013, 2, 5)
+		        // start: "century"//"decade"//"year"//"month"
+		        // This is interesting usage of "data" inside a widget configuration, I have not understood how it works.
+		        footer: "Today: #=kendo.toString(data, 'd')#"
 		      });
+
+		      var calendar = $('#calendar').data('handler');
+		      var calendarProps = Object.getOwnPropertyNames(calendar);
+		      for(var i = 0, len = calendarProps.length; i != len; i++) {
+		        assert(true, calendarProps[i]);
+		      }
 		    });
 		  });
 		</script>
