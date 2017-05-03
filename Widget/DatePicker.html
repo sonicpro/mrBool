@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Date Picker</title>
+		<!-- Notice that using requite.js AMD makes it possible to load kendo.core / widget script in an abritrary order. -->
+		<script type="text/javascript" src="../js/RequireJS/require.js"></script>
+		<script type="text/javascript" src="../js/jquery/jquery-2.2.4.js"></script>
+		<script type="text/javascript" src="../js/Kendo/web/kendo.calendar.js"></script>
+		<script type="text/javascript" src="../js/Kendo/web/kendo.popup.js"></script>		
+		<script type="text/javascript" src="../js/Kendo/web/kendo.datepicker.js"></script>
+		<script type="text/javascript" src="../js/Kendo/web/kendo.core.patched.js"></script>
+		<script type="text/javascript" src="../js/helpers/assert.js"></script>		
+		<link rel="stylesheet" type="text/css" href="../styles/kendo.common.patched.css">
+		<link rel="stylesheet" type="text/css" href="../Less/Theme1/Kendo/kendo.template.css">
+		<link rel="stylesheet" type="text/css" href="../Less/Theme1/Kendo/kendo.customized.css">
+		<link rel="stylesheet" type="text/css" href="../styles/assert.css">		
+		<style type="text/css">
+			.spacer { width: 30px; display: inline-block; }
+		</style>
+	</head>
+	<body>
+		Select a date: <input id="datepicker1" value="11/11/2012" />
+		<span class="spacer"></span>
+		Select another date: <input id="datepicker2" value="June 2012" />
+		<hr />
+		<ul id="info"></ul>
+		<script type="text/javascript">
+		  $(document).ready(function () {
+		    require(['kendo.datepicker'], function () {
+		      $('#datepicker1').kendoDatePicker({
+		        change: pickerChange
+		      });
+		      $('#datepicker2').kendoDatePicker({
+		      
+		      });
+		    });
+		  });
+		  function pickerChange() {
+		    var myDate = this.value();
+		    if (typeof(myDate) != "undefined") {
+		      assert(true, myDate);
+		    }
+		  }
+		</script>
+	</body>
+</html>
