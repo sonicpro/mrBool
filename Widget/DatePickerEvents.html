@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Date Picker 2</title>
+        <!-- Notice that using requite.js AMD makes it possible to load kendo.core / widget script in an abritrary order. -->
+        <script type="text/javascript" src="../js/RequireJS/require.js"></script>
+        <script type="text/javascript" src="../js/jquery/jquery-2.2.4.js"></script>
+        <script type="text/javascript" src="../js/Kendo/web/kendo.calendar.js"></script>
+        <script type="text/javascript" src="../js/Kendo/web/kendo.popup.js"></script>       
+        <script type="text/javascript" src="../js/Kendo/web/kendo.datepicker.js"></script>
+        <script type="text/javascript" src="../js/Kendo/web/kendo.core.patched.js"></script>
+        <script type="text/javascript" src="../js/shared/console.js"></script>
+        <link rel="stylesheet" type="text/css" href="../styles/kendo.common.patched.css">
+        <link rel="stylesheet" type="text/css" href="../Less/Theme1/Kendo/kendo.template.css">
+        <link rel="stylesheet" type="text/css" href="../Less/Theme1/Kendo/kendo.customized.css">
+    </head>
+    <body>
+        Select a date: <input id="datepicker" value="10/09/2012" />
+        <hr />
+        <div class="console"></div>
+        <hr />
+        <button id="open">Open</button>
+        <button id="close">Close</button>
+        <script type="text/javascript">
+            $(document).ready(function () {
+              require(['kendo.datepicker'], function () {
+                $('#datepicker').kendoDatePicker({
+                  change: onChange,
+                  close: onClose,
+                  open: onOpen,
+                  footer: "Today is #= kendo.toString(data, 'd') #",
+                  min: new Date(2011, 7, 1),
+                  max: new Date(2013, 8, 2)
+                });
+                $('button').each(function () {
+                    $(this).click(function () {
+                      // Invoking jQuery widget's method by passing the method name to the plug-in method.
+                      $('#datepicker').kendoDatePicker($(this).attr("id"));
+                  });
+                });
+              });
+            });
+            function onOpen() {
+              kendoConsole.log("Opening ...");
+            }
+            function onClose() {
+              kendoConsole.log("Closing ...");
+            }
+            function onChange() {
+              kendoConsole.log("Changed to: " + kendo.toString(this.value(), 'd'));
+            }
+        </script>
+    </body>
+</html>
