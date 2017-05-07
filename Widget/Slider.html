@@ -19,7 +19,6 @@
     <input id="slider" />
     <hr />
     <div class="console"></div>
-    <hr />
     <script type="text/javascript">
       $(document).ready(function () {
         require(['kendo.slider'], function () {
@@ -41,10 +40,10 @@
         });
       });
       function sliderOnChange(e) {
-        kendoConsole.log("Change called with a new value ==> " + e.value);
+        kendoConsole.log("Change called with the value of ==> " + e.value);
       }
       function sliderOnSlide(e) {
-        kendoConsole.log("Slide is called with a new value ==> " + e.value);
+        kendoConsole.log("Slide is called with the value of ==> " + e.value);
       }
     </script>
   </body>
