@@ -2,19 +2,11 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>ComboBox</title>
+    <title>Numeric TextBox</title>
     <!-- Notice that using requite.js AMD makes it possible to load kendo.core / widget script in an abritrary order. -->
     <script type="text/javascript" src="../js/RequireJS/require.js"></script>
     <script type="text/javascript" src="../js/jquery/jquery-2.2.4.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.combobox.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.list.patched.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.data.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.data.odata.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.data.xml.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.popup.js"></script>
-    <script type="text/javascript" src="../js/Kendo/mobile/kendo.mobile.scroller.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.fx.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.draganddrop.js"></script>
+    <script type="text/javascript" src="../js/Kendo/web/kendo.numerictextbox.js"></script>
     <script type="text/javascript" src="../js/Kendo/web/kendo.userevents.js"></script>
     <script type="text/javascript" src="../js/Kendo/web/kendo.core.patched.js"></script>
     <script type="text/javascript" src="../js/shared/console.js"></script>
@@ -23,33 +15,52 @@
     <link rel="stylesheet" type="text/css" href="../Less/Theme1/Kendo/kendo.customized.css">
   </head>
   <body>
-    Select and item: <input id="combobox" />
+    Select a test score:
+    <input id="testscore" />
+    <hr />
+    Select an interest rate:
+    <input id="interest"
+           value="5"
+           type="number"
+           min="0.5"
+           max="10"
+           step="0.5"
+           placeholder="Enter an interest rate"
+    />
+    <hr />
+    <div class="console"></div>
+    <hr />
     <script type="text/javascript">
       $(document).ready(function () {
-        require(['kendo.combobox'], function () {
-          $('#combobox').kendoComboBox({
-            dataTextField: "text",
-            dataValueField: "value",
-            dataSource: [
-              { text: "CSS3", value: 1 },
-              { text: "JavaScript", value: 2 },
-              { text: "jQuery", value: 3 },
-              { text: "HTML5", value: 4 }
-            ],
-            animation: {
-              open: {
-                effects: "fadeIn",
-                duration: 1000,
-                show: true,
-                hide: false
-              },
-              close: {
-                effects: "fadeOut",
-                duration: 1000,
-                hide: true,
-                show: false
-              }
-            }
+        require(['kendo.numerictextbox'], function () {
+          $('#testscore').kendoNumericTextBox({
+            value: 50,
+            min: 0,
+            max: 100,
+            step: 0.5,
+            format: "g", //c2, p
+            decimals: 1,
+            upArrowText: "Higher", // Does not work in 2016 kendo ui.
+            downArrowText: "Lower",
+            placeholder: "Enter a test score"
+            // spinners: false
+          });
+
+          $('#interest').kendoNumericTextBox();
+
+          var numericTextBox = $('#testscore').data('kendoNumericTextBox');
+          numericTextBox.enable(true); // This line is not required, widget is enabled by default.
+          alert('Here is some information about the first widget: [' +
+          numericTextBox.min() + ',' + numericTextBox.max() + ']\n' +
+          'Stepping by ' + numericTextBox.step() +
+          ' and the current value is ' + numericTextBox.value());
+
+          // Add some event handlers.
+          numericTextBox.bind("change", function () {
+            kendoConsole.log("The change method of the widget is called!");
+          });
+          numericTextBox.bind("spin", function () {
+            kendoConsole.log("Ths spin method of the widget is called!");
           });
         });
       });
