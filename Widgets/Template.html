@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Template</title>
+    <script type="text/javascript" src="../js/jquery/jquery-2.2.4.js"></script>
+    <script type="text/javascript" src="../js/Kendo/web/kendo.core.patched.js"></script>
+    <link rel="stylesheet" type="text/css" href="../styles/kendo.common.patched.css">
+    <link rel="stylesheet" type="text/css" href="../Less/Theme1/Kendo/kendo.template.css">
+    <link rel="stylesheet" type="text/css" href="../Less/Theme1/Kendo/kendo.customized.css">
+    <script type="text/x-kendo-template" id="template1">
+      <h3 class="k-header">Hello #= name #</h3>
+      <article>
+        <h4>This article is posted on
+          <time>#= new Date().toLocaleDateString() #</time>
+          with the following content
+        </h4>
+        <p>#= content #</p>
+      </article>
+    </script>
+    <script type="text/x-kendo-template" id="template3">
+      <p style="-webkit-transform: skew(3deg, 3deg);">
+        Here are the grocery items:
+      </p>
+      <ol>
+        # for (var i = 0; i != data.length; i++) { #
+            <li>#= data[i] #</li>
+        # } #
+      </ol>    
+    </script>
+  </head>
+  <body>
+    <div id="content1"></div>
+    <hr />
+    <div id="content2"></div>
+    <hr />
+    <div id="content3"></div>
+    <hr />
+    <script type="text/javascript">
+      $(document).ready(function () {
+        // Notice that kendo.template uses Jon Resig's microtemplating approach, hence the compiled template is a function.
+        var templ1 = kendo.template($('#template1').html());
+        $('#content1').html(templ1({
+            name: "James",
+            content: "In this article, we will..."
+          })
+        );
+        // templ2 uses html-encoded value placeholder.
+        var templ2 = kendo.template("<div>#: name #</div>");
+        $('#content2').html(templ2({
+            name: "<b><u> James Tester</u></b>"
+          })
+        );
+        // "for" template example.
+        var templ3 = kendo.template($('#template3').html());
+        var data3 = [ "Apple", "Orange", "Lettuce", "Chicken" ];
+        $('#content3').html(templ3(data3));
+      });
+    </script>
+  </body>
+</html>
