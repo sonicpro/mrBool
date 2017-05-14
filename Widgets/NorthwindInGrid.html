@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Northwind in Grid</title>
+    <script type="text/javascript" src="../js/RequireJS/require.js"></script>
+    <!-- Load explicitly only the modules that have module name different from the JS file name. -->
+    <script type="text/javascript" src="../js/Kendo/kendo.grid.patched.js"></script>
+    <script type="text/javascript" src="../js/Kendo/kendo.list.patched.js"></script>
+    <script type="text/javascript" src="../js/Kendo/kendo.pager.patched.js"></script>
+    <script type="text/javascript" src="../js/Kendo/kendo.core.patched.js"></script>
+    <script type="text/javascript" src="../js/Kendo/kendo.mobile.actionsheet.min.js"></script>
+    <script type="text/javascript" src="../js/Kendo/kendo.ooxml.min.js"></script>
+    <script type="text/javascript" src="../js/Kendo/kendo.excel.min.js"></script>
+    <script type="text/javascript" src="../js/Kendo/kendo.pdf.min.js"></script>
+    <script type="text/javascript" src="../js/Kendo/kendo.validator.patched.js"></script>
+    <script type="text/javascript" src="../js/Kendo/kendo.mobile.loader.min.js"></script>
+    <script type="text/javascript" src="../js/Kendo/kendo.view.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../styles/kendo.common.patched.css">
+    <link rel="stylesheet" type="text/css" href="../Less/Theme1/Kendo/kendo.template.css">
+    <link rel="stylesheet" type="text/css" href="../Less/Theme1/Kendo/kendo.customized.css">
+    <style>
+      .k-grouping-header, .k-header
+      {
+        background-color: #9b9e9e;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="maingrid"></div>
+    <script type="text/javascript">
+      require.config({
+        baseUrl: "../js/Kendo",
+        paths: {
+          jquery: "../jquery"
+        }
+      });
+      require(['kendo.grid'], function () {
+        $('#maingrid').kendoGrid({
+          dataSource: {
+            type: "odata",
+            transport: {
+            read: "http://demos.telerik.com/kendo-ui/services/Northwind.svc/Orders"
+            },
+            scheme: {
+              model: {
+                fields: {
+                  OrderID: { type: "number" },
+                  Freight: { type: "number" },
+                  ShipName: { type: "string" },
+                  OrderDate: { type: "date" },
+                  ShipCity: { type: "string" }
+                }
+              }
+            },
+            pageSize: 10,
+            serverPaging: true,
+            serverFiltering: true,
+            serverSorting: true
+          },
+          height: 250,
+          filterable: true,
+          sortable: true,
+          pageable: true,
+          selectable: "multiple cell"
+          columns: [
+            {
+              field: "OrderID",
+              filterable: false
+            },
+            "Freight",
+            {
+              field: "OrderDate",
+              title: "Order Date",
+              width: 100,
+              formate: "{0:MM/dd/yyyy}"
+             },
+            {
+              field: "ShipName",
+              title: "Ship Name",
+              width: 200
+            },
+            {
+              field: "ShipCity",
+              title: "Ship City"
+            }
+          ],
+          change: onChange
+        });
+      });
+
+      onChange
+    </script>
+  </body>
+</html>
