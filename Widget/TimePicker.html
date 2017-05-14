@@ -3,12 +3,11 @@
   <head>
     <meta charset="utf-8">
     <title>Time Picker</title>
-    <!-- Notice that using requite.js AMD makes it possible to load kendo.core / widget script in an abritrary order. -->
     <script type="text/javascript" src="../js/RequireJS/require.js"></script>
-    <script type="text/javascript" src="../js/jquery/jquery-2.2.4.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.timepicker.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.popup.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.core.patched.js"></script>
+    <!-- This one if for kendo console (otherwise we might have used AMD for jQuery loading). -->
+    <script type="text/javascript" src="../js/jquery/jquery.js"></script>
+    <!-- Notice that using requite.js AMD makes it possible to load kendo.core / widget script in an abritrary order. -->
+    <script type="text/javascript" src="../js/Kendo/kendo.core.patched.js"></script>
     <script type="text/javascript" src="../js/shared/console.js"></script>
     <link rel="stylesheet" type="text/css" href="../styles/kendo.common.patched.css">
     <link rel="stylesheet" type="text/css" href="../Less/Theme1/Kendo/kendo.template.css">
@@ -19,47 +18,53 @@
     <hr />
     <div class="console"></div>
     <script type="text/javascript">
-      $(document).ready(function () {
-        require(['kendo.timepicker'], function () {
-          $('#timepicker').kendoTimePicker({
-            value: new Date(2013, 1, 1, 9, 0, 0),
-            // min: new Date(2012, 11, 1, 8, 0, 0),
-            // max: new Date(2013, 5, 15, 18, 0, 0),
-            format: "hh:mm:ss tt",
-            interval: 15,
-            animation: { // animation does not work for the timepicker though it works for combobox.
-              close: {
-                effects: "fadeOut",
-                duration: 1500,
-                hide: true,
-                show: false
-              },
-              open: {
-                effects: "fadeIn",
-                duration: 1500,
-                show: true
-              }
-            },
-            dates: [
-              new Date(2013, 1, 1, 8, 0, 0),
-              new Date(2013, 1, 1, 8, 30, 0),
-              new Date(2013, 1, 1, 9, 0, 0),
-              new Date(2013, 1, 1, 9, 30, 0),
-              new Date(2013, 1, 1, 10, 0, 0),
-              new Date(2013, 1, 1, 10, 30, 0),
-              new Date(2013, 1, 1, 11, 0, 0),
-              new Date(2013, 1, 1, 11, 30, 0)      
-            ],
-            change: onChange,
-            close: onClose,
-            open: onOpen
-          });
-          var timepicker = $('#timepicker').data('kendoTimePicker');
-          alert("Max = " + timepicker.max() + "\n" +
-                "Min = " + timepicker.min() + "\n" +
-                "Value = " + timepicker.value());
-        });
+      require.config({
+        baseUrl: "../js/Kendo",
+        paths: {
+          jquery: "../jquery"
+        }
       });
+
+      require(['kendo.timepicker'], function () {
+        $('#timepicker').kendoTimePicker({
+          value: new Date(2013, 1, 1, 9, 0, 0),
+          // min: new Date(2012, 11, 1, 8, 0, 0),
+          // max: new Date(2013, 5, 15, 18, 0, 0),
+          format: "hh:mm:ss tt",
+          interval: 15,
+          animation: { // animation does not work for the timepicker though it works for combobox.
+            close: {
+              effects: "fadeOut",
+              duration: 1500,
+              hide: true,
+              show: false
+            },
+            open: {
+              effects: "fadeIn",
+              duration: 1500,
+              show: true
+            }
+          },
+          dates: [
+            new Date(2013, 1, 1, 8, 0, 0),
+            new Date(2013, 1, 1, 8, 30, 0),
+            new Date(2013, 1, 1, 9, 0, 0),
+            new Date(2013, 1, 1, 9, 30, 0),
+            new Date(2013, 1, 1, 10, 0, 0),
+            new Date(2013, 1, 1, 10, 30, 0),
+            new Date(2013, 1, 1, 11, 0, 0),
+            new Date(2013, 1, 1, 11, 30, 0)
+          ],
+          change: onChange,
+          close: onClose,
+          open: onOpen
+        });
+        var timepicker = $('#timepicker').data('kendoTimePicker');
+        alert("Max = " + timepicker.max() + "\n" +
+              "Min = " + timepicker.min() + "\n" +
+              "Value = " + timepicker.value());
+      });
+
       function onOpen() {
         kendoConsole.log("Called open() widget method");
       }

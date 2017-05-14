@@ -3,12 +3,11 @@
   <head>
     <meta charset="utf-8">
     <title>Numeric TextBox</title>
-    <!-- Notice that using requite.js AMD makes it possible to load kendo.core / widget script in an abritrary order. -->
     <script type="text/javascript" src="../js/RequireJS/require.js"></script>
-    <script type="text/javascript" src="../js/jquery/jquery-2.2.4.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.numerictextbox.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.userevents.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.core.patched.js"></script>
+    <!-- This one is for kendo console loading (otherwise we might have used AMD). -->
+    <script type="text/javascript" src="../js/jquery/jquery.js"></script>
+    <!-- Load explicitly only the scripts that have module name different from the JS file name. -->
+    <script type="text/javascript" src="../js/Kendo/kendo.core.patched.js"></script>
     <script type="text/javascript" src="../js/shared/console.js"></script>
     <link rel="stylesheet" type="text/css" href="../styles/kendo.common.patched.css">
     <link rel="stylesheet" type="text/css" href="../Less/Theme1/Kendo/kendo.template.css">
@@ -31,37 +30,42 @@
     <div class="console"></div>
     <hr />
     <script type="text/javascript">
-      $(document).ready(function () {
-        require(['kendo.numerictextbox'], function () {
-          $('#testscore').kendoNumericTextBox({
-            value: 50,
-            min: 0,
-            max: 100,
-            step: 0.5,
-            format: "g", //c2, p
-            decimals: 1,
-            upArrowText: "Higher", // Does not work in 2016 kendo ui.
-            downArrowText: "Lower",
-            placeholder: "Enter a test score"
-            // spinners: false
-          });
+      require.config({
+        baseUrl: "../js/Kendo",
+        paths: {
+          jquery: "../jquery"
+        }
+      });
 
-          $('#interest').kendoNumericTextBox();
+      require(['kendo.numerictextbox'], function () {
+        $('#testscore').kendoNumericTextBox({
+          value: 50,
+          min: 0,
+          max: 100,
+          step: 0.5,
+          format: "g", //c2, p
+          decimals: 1,
+          upArrowText: "Higher", // Does not work in 2016 kendo ui.
+          downArrowText: "Lower",
+          placeholder: "Enter a test score"
+          // spinners: false
+        });
 
-          var numericTextBox = $('#testscore').data('kendoNumericTextBox');
-          numericTextBox.enable(true); // This line is not required, widget is enabled by default.
-          alert('Here is some information about the first widget: [' +
-          numericTextBox.min() + ',' + numericTextBox.max() + ']\n' +
-          'Stepping by ' + numericTextBox.step() +
-          ' and the current value is ' + numericTextBox.value());
+        $('#interest').kendoNumericTextBox();
 
-          // Add some event handlers.
-          numericTextBox.bind("change", function () {
-            kendoConsole.log("The change method of the widget is called!");
-          });
-          numericTextBox.bind("spin", function () {
-            kendoConsole.log("Ths spin method of the widget is called!");
-          });
+        var numericTextBox = $('#testscore').data('kendoNumericTextBox');
+        numericTextBox.enable(true); // This line is not required, widget is enabled by default.
+        alert('Here is some information about the first widget: [' +
+        numericTextBox.min() + ',' + numericTextBox.max() + ']\n' +
+        'Stepping by ' + numericTextBox.step() +
+        ' and the current value is ' + numericTextBox.value());
+
+        // Add some event handlers.
+        numericTextBox.bind("change", function () {
+          kendoConsole.log("The change method of the widget is called!");
+        });
+        numericTextBox.bind("spin", function () {
+          kendoConsole.log("Ths spin method of the widget is called!");
         });
       });
     </script>

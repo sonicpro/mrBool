@@ -4,23 +4,14 @@
     <meta charset="utf-8">
     <title>Validation</title>
     <script type="text/javascript" src="../js/RequireJS/require.js"></script>
-    <script type="text/javascript" src="../js/jquery/jquery-2.2.4.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.validator.patched.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.combobox.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.list.patched.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.data.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.data.odata.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.data.xml.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.popup.js"></script>
-    <script type="text/javascript" src="../js/Kendo/mobile/kendo.mobile.scroller.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.fx.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.draganddrop.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.userevents.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.core.patched.js"></script>
+    <!-- Load explicitly only the scripts that have module name different from the JS file name. -->
+    <script type="text/javascript" src="../js/Kendo/kendo.validator.patched.js"></script>
+    <script type="text/javascript" src="../js/Kendo/kendo.list.patched.js"></script>
+    <script type="text/javascript" src="../js/Kendo/kendo.core.patched.js"></script>
     <link rel="stylesheet" type="text/css" href="../styles/kendo.common.patched.css">
     <link rel="stylesheet" type="text/css" href="../Less/Theme1/Kendo/kendo.template.css">
     <link rel="stylesheet" type="text/css" href="../Less/Theme1/Kendo/kendo.customized.css">
-    <style type="text/css">
+    <style>
       #courses ul
       {
         list-style-type: none;
@@ -79,7 +70,7 @@
                  required
                  validationMessage="Please select a course" />
           <span class="k-invalid-msg" data-for="search"></span>
-        </li>        
+        </li>
         <li>
           <label for="credithours">Credit Hours</label>
           <input type="number"
@@ -141,21 +132,27 @@
         "Programming II",
         "JavaScript"
       ];
-      $(document).ready(function () {
-        require(['kendo.validator', 'kendo.combobox'], function () {
-          $('#search').kendoComboBox({
-            dataSource: data,
-            separator: ", "
-          });
-          var validator = $('#courses').kendoValidator().data('kendoValidator');
-          var status = $('.status');
-          $('button').click(function () {
-            if (validator.validate()) {
-              status.text("Great!! Good luck in this semester.").removeClass().addClass('valid');
-            } else {
-              status.text("Oops! There is invalid data in the form.").removeClass().addClass('invalid');
-            }
-          });
+
+      require.config({
+        baseUrl: "../js/Kendo",
+        paths: {
+          jquery: "../jquery"
+        }
+      });
+
+      require(['kendo.validator', 'kendo.combobox'], function () {
+        $('#search').kendoComboBox({
+          dataSource: data,
+          separator: ", "
+        });
+        var validator = $('#courses').kendoValidator().data('kendoValidator');
+        var status = $('.status');
+        $('button').click(function () {
+          if (validator.validate()) {
+            status.text("Great!! Good luck in this semester.").removeClass().addClass('valid');
+          } else {
+            status.text("Oops! There is invalid data in the form.").removeClass().addClass('invalid');
+          }
         });
       });
     </script>

@@ -3,39 +3,16 @@
   <head>
     <meta charset="utf-8">
     <title>Editor</title>
-    <!-- Notice that using requite.js AMD makes it possible to load kendo.core / widget script in an abritrary order. -->
     <script type="text/javascript" src="../js/RequireJS/require.js"></script>
-    <script type="text/javascript" src="../js/jquery/jquery-2.2.4.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.editor.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.combobox.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.dropdownlist.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.window.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.colorpicker.js"></script>    
-    <script type="text/javascript" src="../js/Kendo/web/kendo.list.patched.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.data.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.data.odata.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.data.xml.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.popup.js"></script>
-    <script type="text/javascript" src="../js/Kendo/mobile/kendo.mobile.scroller.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.fx.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.draganddrop.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.userevents.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.color.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.resizable.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.slider.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.filebrowser.min.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.imagebrowser.min.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.core.patched.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.listview.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.dropdownlist.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.upload.patched.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.editable.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.selectable.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.datepicker.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.numerictextbox.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.validator.patched.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.binder.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.calendar.js"></script>
+    <!-- Load explicitly only the scripts that have module name different from the JS file name. -->
+    <script type="text/javascript" src="../js/KEndo/kendo.list.patched.js"></script>
+    <script type="text/javascript" src="../js/Kendo/kendo.filebrowser.min.js"></script>
+    <script type="text/javascript" src="../js/Kendo/kendo.imagebrowser.min.js"></script>
+    <script type="text/javascript" src="../js/Kendo/kendo.core.patched.js"></script>
+    <script type="text/javascript" src="../js/Kendo/kendo.upload.patched.js"></script>
+    <script type="text/javascript" src="../js/Kendo/kendo.validator.patched.js"></script>
+    <!-- This one if for kendo console. -->
+    <script type="text/javascript" src="../js/jquery/jquery.js"></script>
     <script type="text/javascript" src="../js/shared/console.js"></script>
     <link rel="stylesheet" type="text/css" href="../styles/kendo.common.patched.css">
     <link rel="stylesheet" type="text/css" href="../Less/Theme1/Kendo/kendo.template.css">
@@ -49,38 +26,44 @@
     <button id="modify">Modify Selected Text</button>
     <button id="pasteText">Paste Some Text</button>
     <script type="text/javascript">
-      $(document).ready(function () {
-        require(['kendo.editor'], function () {
-          $('#editor').kendoEditor({
-            tools: [
-              "bold",
-              "italic",
-              "underline",
-              "foreColor",
-              "strikethrough",
-              "insertHtml"
-            ],
-            insertHtml: [
-              { text: "Item 1", value: "<p>First Item</p>" },
-              { text: "Item 2", value: "<p>Second Item</p>" }
-            ],
-            execute: onExecute,
-            change: onChange
-          });
-          var editor = $('#editor').data('kendoEditor');
-          editor.value('<p>Welcome to the editor!</p>');
-          $('#pasteText').click(function () {
-            editor.paste("<p>Here is some additional information</p>");
-          });
-          $('#modify').click(function () {
-            kendoConsole.log("Modifying the selected text...");      
-            editor.exec("bold");
-            editor.exec("underline");
-            editor.exec("foreColor", { value: "#ff0000" });
-            kendoConsole.log(editor.selectedHtml());
-          });      
+      require.config({
+        baseUrl: "../js/Kendo",
+        paths: {
+          jquery: "../jquery"
+        }
+      });
+
+      require(['kendo.editor'], function () {
+        $('#editor').kendoEditor({
+          tools: [
+            "bold",
+            "italic",
+            "underline",
+            "foreColor",
+            "strikethrough",
+            "insertHtml"
+          ],
+          insertHtml: [
+            { text: "Item 1", value: "<p>First Item</p>" },
+            { text: "Item 2", value: "<p>Second Item</p>" }
+          ],
+          execute: onExecute,
+          change: onChange
+        });
+        var editor = $('#editor').data('kendoEditor');
+        editor.value('<p>Welcome to the editor!</p>');
+        $('#pasteText').click(function () {
+          editor.paste("<p>Here is some additional information</p>");
+        });
+        $('#modify').click(function () {
+          kendoConsole.log("Modifying the selected text...");
+          editor.exec("bold");
+          editor.exec("underline");
+          editor.exec("foreColor", { value: "#ff0000" });
+          kendoConsole.log(editor.selectedHtml());
         });
       });
+
       function onExecute() {
         kendoConsole.log("The execute function has been called!");
       }

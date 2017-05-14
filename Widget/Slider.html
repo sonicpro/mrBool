@@ -3,13 +3,11 @@
   <head>
     <meta charset="utf-8">
     <title>Slider</title>
-    <!-- Notice that using requite.js AMD makes it possible to load kendo.core / widget script in an abritrary order. -->
     <script type="text/javascript" src="../js/RequireJS/require.js"></script>
-    <script type="text/javascript" src="../js/jquery/jquery-2.2.4.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.slider.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.userevents.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.draganddrop.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.core.patched.js"></script>
+    <!-- This one if for kendo console (otherwise we might have used AMD for jQuery loading. -->
+    <script type="text/javascript" src="../js/jquery/jquery.js"></script>
+    <!-- Load explicitly only the scripts that have module name different from the JS file name. -->
+    <script type="text/javascript" src="../js/Kendo/kendo.core.patched.js"></script>
     <script type="text/javascript" src="../js/shared/console.js"></script>
     <link rel="stylesheet" type="text/css" href="../styles/kendo.common.patched.css">
     <link rel="stylesheet" type="text/css" href="../Less/Theme1/Kendo/kendo.template.css">
@@ -20,25 +18,31 @@
     <hr />
     <div class="console"></div>
     <script type="text/javascript">
-      $(document).ready(function () {
-        require(['kendo.slider'], function () {
-          $('#slider').kendoSlider({
-            min: 1,
-            max: 25,
-            value: 10,
-            orientation: "horizontal", // "vertical"
-            smallStep: 1,
-            largeStep: 5,
-            decreaseButtonTitle: "down", // This does not work for the Kendo UI 2016.
-            increaseButtonTitle: "up",
-            tickPlacement: "bottomRight",
-            change: sliderOnChange,
-            slide: sliderOnSlide
-          });
-          var slider = $('#slider').data('handler');
-          alert("Current value is: " + slider.value());
-        });
+      require.config({
+        baseUrl: "../js/Kendo",
+        paths: {
+          jquery: "../jquery"
+        }
       });
+
+      require(['kendo.slider'], function () {
+        $('#slider').kendoSlider({
+          min: 1,
+          max: 25,
+          value: 10,
+          orientation: "horizontal", // "vertical"
+          smallStep: 1,
+          largeStep: 5,
+          decreaseButtonTitle: "down", // This does not work for the Kendo UI 2016.
+          increaseButtonTitle: "up",
+          tickPlacement: "bottomRight",
+          change: sliderOnChange,
+          slide: sliderOnSlide
+        });
+        var slider = $('#slider').data('handler');
+        alert("Current value is: " + slider.value());
+      });
+
       function sliderOnChange(e) {
         kendoConsole.log("Change called with the value of ==> " + e.value);
       }

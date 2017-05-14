@@ -3,21 +3,10 @@
   <head>
     <meta charset="utf-8">
     <title>ComboBox</title>
-    <!-- Notice that using requite.js AMD makes it possible to load kendo.core / widget script in an abritrary order. -->
+    <!-- Load explicitly only the scripts that have module name different from the JS file name. -->
     <script type="text/javascript" src="../js/RequireJS/require.js"></script>
-    <script type="text/javascript" src="../js/jquery/jquery-2.2.4.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.combobox.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.list.patched.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.data.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.data.odata.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.data.xml.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.popup.js"></script>
-    <script type="text/javascript" src="../js/Kendo/mobile/kendo.mobile.scroller.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.fx.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.draganddrop.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.userevents.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.core.patched.js"></script>
-    <script type="text/javascript" src="../js/shared/console.js"></script>
+    <script type="text/javascript" src="../js/Kendo/kendo.list.patched.js"></script>
+    <script type="text/javascript" src="../js/Kendo/kendo.core.patched.js"></script>
     <link rel="stylesheet" type="text/css" href="../styles/kendo.common.patched.css">
     <link rel="stylesheet" type="text/css" href="../Less/Theme1/Kendo/kendo.template.css">
     <link rel="stylesheet" type="text/css" href="../Less/Theme1/Kendo/kendo.customized.css">
@@ -25,32 +14,36 @@
   <body>
     Select and item: <input id="combobox" />
     <script type="text/javascript">
-      $(document).ready(function () {
-        require(['kendo.combobox'], function () {
-          $('#combobox').kendoComboBox({
-            dataTextField: "text",
-            dataValueField: "value",
-            dataSource: [
-              { text: "CSS3", value: 1 },
-              { text: "JavaScript", value: 2 },
-              { text: "jQuery", value: 3 },
-              { text: "HTML5", value: 4 }
-            ],
-            animation: {
-              open: {
-                effects: "fadeIn",
-                duration: 1000,
-                show: true,
-                hide: false
-              },
-              close: {
-                effects: "fadeOut",
-                duration: 1000,
-                hide: true,
-                show: false
-              }
+      require.config({
+        baseUrl: "../js/Kendo",
+        paths: {
+          jquery: "../jquery"
+        }
+      });
+      require(['kendo.combobox'], function () {
+        $('#combobox').kendoComboBox({
+          dataTextField: "text",
+          dataValueField: "value",
+          dataSource: [
+            { text: "CSS3", value: 1 },
+            { text: "JavaScript", value: 2 },
+            { text: "jQuery", value: 3 },
+            { text: "HTML5", value: 4 }
+          ],
+          animation: {
+            open: {
+              effects: "fadeIn",
+              duration: 1000,
+              show: true,
+              hide: false
+            },
+            close: {
+              effects: "fadeOut",
+              duration: 1000,
+              hide: true,
+              show: false
             }
-          });
+          }
         });
       });
     </script>

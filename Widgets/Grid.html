@@ -4,50 +4,18 @@
     <meta charset="utf-8">
     <title>Grid</title>
     <script type="text/javascript" src="../js/RequireJS/require.js"></script>
-    <script type="text/javascript" src="../js/jquery/jquery-2.2.4.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.grid.patched.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.data.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.data.xml.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.data.odata.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.columnsorter.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.editable.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.datepicker.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.calendar.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.numerictextbox.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.validator.patched.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.binder.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.window.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.draganddrop.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.userevents.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.filtermenu.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.dropdownlist.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.list.patched.js"></script>
-    <script type="text/javascript" src="../js/Kendo/mobile/kendo.mobile.scroller.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.columnmenu.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.popup.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.menu.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.groupable.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.pager.patched.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.selectable.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.sortable.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.reorderable.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.resizable.js"></script>
-    <script type="text/javascript" src="../js/Kendo/mobile/kendo.mobile.actionsheet.min.js"></script>
-    <script type="text/javascript" src="../js/Kendo/mobile/kendo.mobile.pane.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.ooxml.min.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.excel.min.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.progressbar.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.pdf.min.js"></script>
-    <script type="text/javascript" src="../js/Kendo/mobile/kendo.mobile.loader.min.js"></script>
-    <script type="text/javascript" src="../js/Kendo/mobile/kendo.mobile.view.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.view.min.js"></script>
-    <script type="text/javascript" src="../js/Kendo/mobile/kendo.mobile.actionsheet.min.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.color.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.drawing.min.js"></script>
-    <script type="text/javascript" src="../js/Kendo/mobile/kendo.mobile.popover.min.js"></script>
-    <script type="text/javascript" src="../js/Kendo/mobile/kendo.mobile.shim.min.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.fx.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.core.patched.js"></script>
+    <!-- Load explicitly only the modules that have module name different from the JS file name. -->
+    <script type="text/javascript" src="../js/Kendo/kendo.grid.patched.js"></script>
+    <script type="text/javascript" src="../js/Kendo/kendo.list.patched.js"></script>
+    <script type="text/javascript" src="../js/Kendo/kendo.pager.patched.js"></script>
+    <script type="text/javascript" src="../js/Kendo/kendo.core.patched.js"></script>
+    <script type="text/javascript" src="../js/Kendo/kendo.mobile.actionsheet.min.js"></script>
+    <script type="text/javascript" src="../js/Kendo/kendo.ooxml.min.js"></script>
+    <script type="text/javascript" src="../js/Kendo/kendo.excel.min.js"></script>
+    <script type="text/javascript" src="../js/Kendo/kendo.pdf.min.js"></script>
+    <script type="text/javascript" src="../js/Kendo/kendo.validator.patched.js"></script>
+    <script type="text/javascript" src="../js/Kendo/kendo.mobile.loader.min.js"></script>
+    <script type="text/javascript" src="../js/Kendo/kendo.view.min.js"></script>
     <link rel="stylesheet" type="text/css" href="../styles/kendo.common.patched.css">
     <link rel="stylesheet" type="text/css" href="../Less/Theme1/Kendo/kendo.template.css">
     <link rel="stylesheet" type="text/css" href="../Less/Theme1/Kendo/kendo.customized.css">
@@ -61,73 +29,77 @@
   <body>
     <div id="maingrid"></div>
     <script type="text/javascript">
-      $(document).ready(function () {
-        require(['kendo.grid'], function () {
-          $('#maingrid').kendoGrid({
-            columns: [
-              {
-                field: "id",
-                title: "Id",
-                width: 50,
-                type: "number"
-              },
-              {
-                field: "firstName",
-                title: "First Name",
-                type: "string"
-              },
-              {
-                field: "lastName",
-                title: "Last Name",
-                type: "string"
-              },
-              {
-                field: "salary",
-                title: "Salary",
-                template: "#= kendo.toString(salary, 'c2') #",
-                type: "number"
-              },
-              {
-                field: "birthDate",
-                Title: "Birth Date",
-                template: "#= kendo.toString(birthDate, 'dd MMMM yyyy') #",
-                type: "date"
-              }
+      require.config({
+        baseUrl: "../js/Kendo",
+        paths: {
+          jquery: "../jquery"
+        }
+      });
+      require(['kendo.grid'], function () {
+        $('#maingrid').kendoGrid({
+          columns: [
+            {
+              field: "id",
+              title: "Id",
+              width: 50,
+              type: "number"
+            },
+            {
+              field: "firstName",
+              title: "First Name",
+              type: "string"
+            },
+            {
+              field: "lastName",
+              title: "Last Name",
+              type: "string"
+            },
+            {
+              field: "salary",
+              title: "Salary",
+              template: "#= kendo.toString(salary, 'c2') #",
+              type: "number"
+            },
+            {
+              field: "birthDate",
+              title: "Birth Date",
+              template: "#= kendo.toString(birthDate, 'dd MMMM yyyy') #",
+              type: "date"
+            }
+          ],
+          dataSource: {
+            data: [
+              { id: 10, firstName: "Jim", lastName: "Smith", salary: 10000, birthDate: new Date(1976, 9, 2) },
+              { id: 11, firstName: "Jim", lastName: "Raven", salary: 55000, birthDate: new Date(1967, 7, 1) },
+              { id: 12, firstName: "Liz", lastName: "Osborn", salary: 32000, birthDate: new Date(1955, 6, 19) },
+              { id: 13, firstName: "Mike", lastName: "Green", salary: 15000, birthDate: new Date(1949, 1, 25) },
+              { id: 14, firstName: "Adrien", lastName: "Russ", salary: 45000, birthDate: new Date(1982, 4, 22) },
+              { id: 15, firstName: "Aaron", lastName: "Lavern", salary: 37000, birthDate: new Date(1939, 3, 15) },
+              { id: 16, firstName: "Zoey", lastName: "Kapen", salary: 65000, birthDate: new Date(1944, 2, 14) },
+              { id: 17, firstName: "Bob", lastName: "Vandern", salary: 44000, birthDate: new Date(1967, 8, 9) },
+              { id: 18, firstName: "Liza", lastName: "Blob", salary: 59000, birthDate: new Date(1965, 11, 12) },
+              { id: 19, firstName: "Mike", lastName: "Fish", salary: 25000, birthDate: new Date(1977, 10, 11) },
+              { id: 20, firstName: "Cathy", lastName: "Codd", salary: 25000, birthDate: new Date(1981, 3, 23) },
+              { id: 21, firstName: "David", lastName: "Timott", salary: 25000, birthDate: new Date(1959, 1, 16) },
+              { id: 22, firstName: "Daniel", lastName: "Short", salary: 25000, birthDate: new Date(1954, 5, 19) }
             ],
-            dataSource: {
-              data: [
-                { id: 10, firstName: "Jim", lastName: "Smith", salary: 10000, birthDate: new Date(1976, 9, 2) },
-                { id: 11, firstName: "Jim", lastName: "Raven", salary: 55000, birthDate: new Date(1967, 7, 1) },
-                { id: 12, firstName: "Liz", lastName: "Osborn", salary: 32000, birthDate: new Date(1955, 6, 19) },
-                { id: 13, firstName: "Mike", lastName: "Green", salary: 15000, birthDate: new Date(1949, 1, 25) },
-                { id: 14, firstName: "Adrien", lastName: "Russ", salary: 45000, birthDate: new Date(1982, 4, 22) },
-                { id: 15, firstName: "Aaron", lastName: "Lavern", salary: 37000, birthDate: new Date(1939, 3, 15) },
-                { id: 16, firstName: "Zoey", lastName: "Kapen", salary: 65000, birthDate: new Date(1944, 2, 14) },
-                { id: 17, firstName: "Bob", lastName: "Vandern", salary: 44000, birthDate: new Date(1967, 8, 9) },
-                { id: 18, firstName: "Liza", lastName: "Blob", salary: 59000, birthDate: new Date(1965, 11, 12) },
-                { id: 19, firstName: "Mike", lastName: "Fish", salary: 25000, birthDate: new Date(1977, 10, 11) },
-                { id: 20, firstName: "Cathy", lastName: "Codd", salary: 25000, birthDate: new Date(1981, 3, 23) },
-                { id: 21, firstName: "David", lastName: "Timott", salary: 25000, birthDate: new Date(1959, 1, 16) },
-                { id: 22, firstName: "Daniel", lastName: "Short", salary: 25000, birthDate: new Date(1954, 5, 19) }
-              ],
-              pageSize: 5
-            },
-            sortable: {
-              mode: "single", // "multiple"
-              allowUnsort: false
-            },
-            pageable: {
-              refresh: true,
-              pageSizes: true,
-              numeric: true,
-              input: true
-            },
-            height: 300,
-            selectable: "multiple cell",
-            scrollable: false,
-            navigatable: true,
-            groupable: true
-          });
+            pageSize: 5
+          },
+          sortable: {
+            mode: "single", // "multiple"
+            allowUnsort: false
+          },
+          pageable: {
+            refresh: true,
+            pageSizes: true,
+            numeric: true,
+            input: true
+          },
+          height: 300,
+          selectable: "multiple cell",
+          scrollable: false,
+          navigatable: true,
+          groupable: true
         });
       });
     </script>
