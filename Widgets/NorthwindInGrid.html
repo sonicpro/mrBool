@@ -16,6 +16,9 @@
     <script type="text/javascript" src="../js/Kendo/kendo.validator.patched.js"></script>
     <script type="text/javascript" src="../js/Kendo/kendo.mobile.loader.min.js"></script>
     <script type="text/javascript" src="../js/Kendo/kendo.view.min.js"></script>
+    <!-- jQuery script is only loaded explicitly for the console.js initialization. -->
+    <script type="text/javascript" src="../js/jquery/jquery.js"></script>
+    <script type="text/javascript" src="../js/shared/console.js"></script>
     <link rel="stylesheet" type="text/css" href="../styles/kendo.common.patched.css">
     <link rel="stylesheet" type="text/css" href="../Less/Theme1/Kendo/kendo.template.css">
     <link rel="stylesheet" type="text/css" href="../Less/Theme1/Kendo/kendo.customized.css">
@@ -28,6 +31,8 @@
   </head>
   <body>
     <div id="maingrid"></div>
+    <hr />
+    <div class="console"></div>
     <script type="text/javascript">
       require.config({
         baseUrl: "../js/Kendo",
@@ -40,9 +45,9 @@
           dataSource: {
             type: "odata",
             transport: {
-            read: "http://demos.telerik.com/kendo-ui/services/Northwind.svc/Orders"
+            read: "http://demos.telerik.com/kendo-ui/service/Northwind.svc/Orders"
             },
-            scheme: {
+            schema: {
               model: {
                 fields: {
                   OrderID: { type: "number" },
@@ -62,7 +67,7 @@
           filterable: true,
           sortable: true,
           pageable: true,
-          selectable: "multiple cell"
+          selectable: "multiple cell",
           columns: [
             {
               field: "OrderID",
@@ -73,7 +78,7 @@
               field: "OrderDate",
               title: "Order Date",
               width: 100,
-              formate: "{0:MM/dd/yyyy}"
+              format: "{0:MM/dd/yyyy}"
              },
             {
               field: "ShipName",
@@ -89,7 +94,20 @@
         });
       });
 
-      onChange
+      function onChange() {
+        var total = 0;
+        // Probably the select() below is the Grid Widget method, not the $.trigger('select').
+        var selected = $.map(this.select(), function (cell) {
+          if (!isNaN(parseFloat($(cell).text()))) {
+            total += parseFloat($(cell).text());
+          }
+          return $(cell).text(); // Returns an element of the map() resulting array.
+        });
+        kendoConsole.log("Selected: " +
+        selected.length + " item(s), ["
+        + selected.join(", ")
+        + "] with total = " + total);
+      }
     </script>
   </body>
 </html>

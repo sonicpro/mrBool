@@ -3,17 +3,11 @@
   <head>
     <meta charset="utf-8">
     <title>Tree View</title>
-    <!-- Notice that using requite.js AMD makes it possible to load kendo.core / widget script in an abritrary order. -->
+    <!-- Load explicitly only the scripts whose name differs from the module name. -->
     <script type="text/javascript" src="../js/RequireJS/require.js"></script>
-    <script type="text/javascript" src="../js/jquery/jquery-2.2.4.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.treeview.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.data.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.data.odata.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.data.xml.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.treeview.draganddrop.min.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.draganddrop.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.userevents.js"></script>    
-    <script type="text/javascript" src="../js/Kendo/web/kendo.core.patched.js"></script>   
+    <script type="text/javascript" src="../js/Kendo/kendo.treeview.js"></script>
+    <script type="text/javascript" src="../js/Kendo/kendo.treeview.draganddrop.min.js"></script>
+    <script type="text/javascript" src="../js/Kendo/kendo.core.patched.js"></script>
     <link rel="stylesheet" type="text/css" href="../styles/kendo.common.patched.css">
     <link rel="stylesheet" type="text/css" href="../Less/Theme1/Kendo/kendo.template.css">
     <link rel="stylesheet" type="text/css" href="../Less/Theme1/Kendo/kendo.customized.css">
@@ -60,7 +54,7 @@
         <button class="k-button" id="expandAllNodes">
           Expand all nodes
         </button>
-      </li>      
+      </li>
       <li>
         <button class="k-button" id="collapseAllNodes">
           Collapse all nodes
@@ -74,48 +68,53 @@
       </li>
     </ul>
     <script type="text/javascript">
-      $(document).ready(function () {
-        require(['kendo.treeview'], function () {
-          $('#treeview').kendoTreeView({
-            dragAndDrop: true,
-            animation: { // Neither does work in the treeview, nor in the timepicker.
-              expand: {
-                duration: 1000,
-                effects: "fadeIn"
-              },
-              collapse: {
-                duration: 1000,
-                effects: "fadeOut"
-              }
+      require.config({
+        baseUrl: "../js/Kendo",
+        paths: {
+          jquery: "../jquery"
+        }
+      });
+
+      require(['kendo.treeview'], function () {
+        $('#treeview').kendoTreeView({
+          dragAndDrop: true,
+          animation: { // Neither does work in the treeview, nor in the timepicker.
+            expand: {
+              duration: 1000,
+              effects: "fadeIn"
+            },
+            collapse: {
+              duration: 1000,
+              effects: "fadeOut"
             }
-          });
-          var treeview = $('#treeview').data('kendoTreeView');
-          $('#disableNode').click(function () {
-            var selectedNode = treeview.select();
-            treeview.enable(selectedNode, false);
-          });
-          $('#enableAllNodes').click(function () {
-            treeview.enable('.k-item');
-          });
-          $('#removeNode').click(function () {
-            var selectedNode = treeview.select();
-            treeview.remove(selectedNode);
-          });
-          $('#expandAllNodes').click(function () {
-            treeview.expand('.k-item');
-          });
-          $('#collapseAllNodes').click(function () {
-            treeview.collapse('.k-item');
-          });
-          $('#appendNodeToSelected').click(function () {
-            var selectedNode = treeview.select();
-            if (selectedNode.length === 0) {
-              selectedNode = null; // root node.
-            }
-            treeview.append({
-              text: $('#appendNodeText').val()
-            }, selectedNode);
-          });
+          }
+        });
+        var treeview = $('#treeview').data('kendoTreeView');
+        $('#disableNode').click(function () {
+          var selectedNode = treeview.select();
+          treeview.enable(selectedNode, false);
+        });
+        $('#enableAllNodes').click(function () {
+          treeview.enable('.k-item');
+        });
+        $('#removeNode').click(function () {
+          var selectedNode = treeview.select();
+          treeview.remove(selectedNode);
+        });
+        $('#expandAllNodes').click(function () {
+          treeview.expand('.k-item');
+        });
+        $('#collapseAllNodes').click(function () {
+          treeview.collapse('.k-item');
+        });
+        $('#appendNodeToSelected').click(function () {
+          var selectedNode = treeview.select();
+          if (selectedNode.length === 0) {
+            selectedNode = null; // root node.
+          }
+          treeview.append({
+            text: $('#appendNodeText').val()
+          }, selectedNode);
         });
       });
     </script>
