@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Color Picker</title>
+    <script type="text/javascript" src="../js/RequireJS/require.js"></script>
+    <script type="text/javascript" src="../js/Kendo/kendo.colorpicker.js"></script>
+    <script type="text/javascript" src="../js/Kendo/kendo.core.patched.js"></script>
+    <link rel="stylesheet" type="text/css" href="../styles/kendo.common.patched.css">
+    <link rel="stylesheet" type="text/css" href="../Less/Theme1/Kendo/kendo.template.css">
+    <link rel="stylesheet" type="text/css" href="../Less/Theme1/Kendo/kendo.customized.css">
+    <style>
+      .demo-section
+      {
+        width: 660px;
+        padding: 30px;
+        text-align: center;
+      }
+      .k-button
+      {
+        min-width: 80px;
+      }
+      .removeBullet
+      {
+        list-style: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="demo-section">
+      <label for="colorpicker">ColorPicker:</label>
+      <input id="colorpicker" value="#00f" />
+    </div>
+    <hr />
+    <div id="shortStory">
+      <p>Everything is fine, he thought. I'm doing all right. I'm doing nicely. I know my way home.
+        I'll be there in a half a hour. When I land I shall taxi in and switch off my engine and I shall say,
+        help me to get out, will you. I shall make my voice sound ordinary and natural and none of them will take
+        any notice. Then I shall say, someone help me to get out. I can't do it alone because I've lost one of my
+        legs. They'll all laugh and think that I'm joking, and I shall say, all right, come and have a look,
+        you unbelieving bastards. Then Yourky climb up onto the wing and look inside. He'll probably be sick because
+        all of the blood and the mess. I shall laugh and say, for God's sake, help me out.
+    </div>
+    <div>
+      <ul class="removeBullet">
+        <li>
+          <button id="enable" class="k-button">Enable</button>
+          <button id="disable" class="k-button">Disable</button>
+        </li>
+      </ul>
+      <ul class="removeBullet">
+        <li>
+          <button id="open" class="k-button">Open</button>
+          <button id="close" class="k-button">Close</button>
+        </li>
+      </ul>
+      <script type="text/javascript">
+        require.config({
+          baseUrl: "../js/Kendo",
+          paths: {
+            jquery: "../jquery"
+          }
+        });
+
+        require(['kendo.colorpicker'], function () {
+          var colorpicker = $('#colorpicker').kendoColorPicker({
+            palette: null,  //"websafe",
+            buttons: false, // Removes "Apply" and "Cancel" buttons.
+            opacity: true,
+            change: updateColor
+          }).data("kendoColorPicker");
+
+          $('#enable').click(function () {
+            colorpicker.enable();
+          });
+          $('#disable').click(function () {
+            colorpicker.enable(false);
+          });
+          $('#open').click(function () {
+            colorpicker.open();
+          });
+          $('#close').click(function () {
+            colorpicker.close();
+          });
+        });
+
+        function updateColor(e) {
+          $('#shortStory').css('background-color', e.value);
+        }
+      </script>
+  </body>
+</html>
