@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <title>Template</title>
-    <script type="text/javascript" src="../js/jquery/jquery-2.2.4.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.core.patched.js"></script>
+    <script type="text/javascript" src="../js/RequireJS/require.js"></script>
+    <script type="text/javascript" src="../js/Kendo/kendo.core.patched.js"></script>
     <link rel="stylesheet" type="text/css" href="../styles/kendo.common.patched.css">
     <link rel="stylesheet" type="text/css" href="../Less/Theme1/Kendo/kendo.template.css">
     <link rel="stylesheet" type="text/css" href="../Less/Theme1/Kendo/kendo.customized.css">
@@ -26,7 +26,7 @@
         # for (var i = 0; i != data.length; i++) { #
             <li>#= data[i] #</li>
         # } #
-      </ol>    
+      </ol>
     </script>
   </head>
   <body>
@@ -37,7 +37,14 @@
     <div id="content3"></div>
     <hr />
     <script type="text/javascript">
-      $(document).ready(function () {
+      require.config({
+        baseUrl: "../js/Kendo",
+        paths: {
+          jquery: "../jquery"
+        }
+      });
+
+      require(['kendo.core'], function () {
         // Notice that kendo.template uses Jon Resig's microtemplating approach, hence the compiled template is a function.
         var templ1 = kendo.template($('#template1').html());
         $('#content1').html(templ1({

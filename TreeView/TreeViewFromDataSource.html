@@ -3,17 +3,12 @@
   <head>
     <meta charset="utf-8">
     <title>Tree View</title>
-    <!-- Notice that using requite.js AMD makes it possible to load kendo.core / widget script in an abritrary order. -->
+    <!-- Load explicitly only the scripts that have their file name different from the module name. -->
     <script type="text/javascript" src="../js/RequireJS/require.js"></script>
-    <script type="text/javascript" src="../js/jquery/jquery-2.2.4.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.treeview.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.data.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.data.odata.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.data.xml.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.treeview.draganddrop.min.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.draganddrop.js"></script>
-    <script type="text/javascript" src="../js/Kendo/web/kendo.userevents.js"></script>    
-    <script type="text/javascript" src="../js/Kendo/web/kendo.core.patched.js"></script>   
+    <!-- jQuery script is loaded explicitly for console.js, wich does not have AMD dependency specified. -->
+    <script type="text/javascript" src="../js/jquery/jquery.js"></script>
+    <script type="text/javascript" src="../js/Kendo/kendo.treeview.draganddrop.min.js"></script>
+    <script type="text/javascript" src="../js/Kendo/kendo.core.patched.js"></script>
     <script type="text/javascript" src="../js/shared/console.js"></script>
     <link rel="stylesheet" type="text/css" href="../styles/kendo.common.patched.css">
     <link rel="stylesheet" type="text/css" href="../Less/Theme1/Kendo/kendo.template.css">
@@ -24,44 +19,50 @@
     <hr />
     <div class="console"></div>
     <script type="text/javascript">
-      $(document).ready(function () {
-        require(['kendo.treeview'], function () {
-          $('#treeview').kendoTreeView({
-            dragAndDrop: true,
-            checkboxes: {
-            checkChildren: true
+      require.config({
+        baseUrl: "../js/Kendo",
+        paths: {
+          jquery: "../jquery"
+        }
+      });
+
+      require(['kendo.treeview'], function () {
+        $('#treeview').kendoTreeView({
+          dragAndDrop: true,
+          checkboxes: {
+          checkChildren: true
+          },
+          dataSource: [
+            {
+              text: "Development",
+              imageUrl: "../images/folder_16.png",
+              expanded: true,
+              items: [
+                { text: "Write Code" },
+                { text: "Unit Test" },
+                { text: "Check In" }
+              ]
             },
-            dataSource: [
-              {
-                text: "Development",
-                imageUrl: "../images/folder_16.png",
-                expanded: true,
-                items: [
-                  { text: "Write Code" },
-                  { text: "Unit Test" },
-                  { text: "Check In" }
-                ]
-              },
-              {
-                text: "Production",
-                imageUrl: "../images/folder_16.png",
-                items: [
-                  { text: "Merge Code" },
-                  { text: "Deploy" },
-                  { text: "Confirm with Clients" }
-                ]
-              },
-              {
-                text: "Regression Testing",
-                imageUrl: "../images/folder_16.png"
-              }
-            ],
-            select: onSelect
-          });
+            {
+              text: "Production",
+              imageUrl: "../images/folder_16.png",
+              items: [
+                { text: "Merge Code" },
+                { text: "Deploy" },
+                { text: "Confirm with Clients" }
+              ]
+            },
+            {
+              text: "Regression Testing",
+              imageUrl: "../images/folder_16.png"
+            }
+          ],
+          select: onSelect
         });
       });
+
       function onSelect(e) {
-        kendoConsole.log("Selected: <b>" + this.text(e.node) + "</b>"); 
+        kendoConsole.log("Selected: <b>" + this.text(e.node) + "</b>");
       }
     </script>
   </body>
