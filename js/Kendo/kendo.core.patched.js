@@ -23,7 +23,7 @@
 
 */
 (function (f, define) {
-    define('kendo.core', ['jquery/jquery'], f);
+    define('kendo.core', ['jquery'], f);
 }(function () {
     var __meta__ = {
         id: 'core',

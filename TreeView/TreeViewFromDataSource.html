@@ -6,7 +6,7 @@
     <!-- Load explicitly only the scripts that have their file name different from the module name. -->
     <script type="text/javascript" src="../js/RequireJS/require.js"></script>
     <!-- jQuery script is loaded explicitly for console.js, wich does not have AMD dependency specified. -->
-    <script type="text/javascript" src="../js/jquery/jquery.js"></script>
+    <script type="text/javascript" src="../js/jquery/jquery-2.2.4.js"></script>
     <script type="text/javascript" src="../js/Kendo/kendo.treeview.draganddrop.min.js"></script>
     <script type="text/javascript" src="../js/Kendo/kendo.core.patched.js"></script>
     <script type="text/javascript" src="../js/shared/console.js"></script>
@@ -22,7 +22,7 @@
       require.config({
         baseUrl: "../js/Kendo",
         paths: {
-          jquery: "../jquery"
+          jquery: "../jquery/jquery-2.2.4"
         }
       });
 

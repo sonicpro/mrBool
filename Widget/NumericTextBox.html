@@ -5,7 +5,7 @@
     <title>Numeric TextBox</title>
     <script type="text/javascript" src="../js/RequireJS/require.js"></script>
     <!-- This one is for kendo console loading (otherwise we might have used AMD). -->
-    <script type="text/javascript" src="../js/jquery/jquery.js"></script>
+    <script type="text/javascript" src="../js/jquery/jquery-2.2.4.js"></script>
     <!-- Load explicitly only the scripts that have module name different from the JS file name. -->
     <script type="text/javascript" src="../js/Kendo/kendo.core.patched.js"></script>
     <script type="text/javascript" src="../js/shared/console.js"></script>
@@ -33,7 +33,7 @@
       require.config({
         baseUrl: "../js/Kendo",
         paths: {
-          jquery: "../jquery"
+          jquery: "../jquery/jquery-2.2.4"
         }
       });
 

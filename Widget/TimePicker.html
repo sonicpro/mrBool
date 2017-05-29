@@ -5,7 +5,7 @@
     <title>Time Picker</title>
     <script type="text/javascript" src="../js/RequireJS/require.js"></script>
     <!-- This one if for kendo console (otherwise we might have used AMD for jQuery loading). -->
-    <script type="text/javascript" src="../js/jquery/jquery.js"></script>
+    <script type="text/javascript" src="../js/jquery/jquery-2.2.4.js"></script>
     <!-- Notice that using requite.js AMD makes it possible to load kendo.core / widget script in an abritrary order. -->
     <script type="text/javascript" src="../js/Kendo/kendo.core.patched.js"></script>
     <script type="text/javascript" src="../js/shared/console.js"></script>
@@ -21,7 +21,7 @@
       require.config({
         baseUrl: "../js/Kendo",
         paths: {
-          jquery: "../jquery"
+          jquery: "../jquery/jquery-2.2.4"
         }
       });
 

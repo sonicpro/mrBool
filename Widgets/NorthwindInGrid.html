@@ -17,7 +17,7 @@
     <script type="text/javascript" src="../js/Kendo/kendo.mobile.loader.min.js"></script>
     <script type="text/javascript" src="../js/Kendo/kendo.view.min.js"></script>
     <!-- jQuery script is only loaded explicitly for the console.js initialization. -->
-    <script type="text/javascript" src="../js/jquery/jquery.js"></script>
+    <script type="text/javascript" src="../js/jquery/jquery-2.2.4.js"></script>
     <script type="text/javascript" src="../js/shared/console.js"></script>
     <link rel="stylesheet" type="text/css" href="../styles/kendo.common.patched.css">
     <link rel="stylesheet" type="text/css" href="../Less/Theme1/Kendo/kendo.template.css">
@@ -37,7 +37,7 @@
       require.config({
         baseUrl: "../js/Kendo",
         paths: {
-          jquery: "../jquery"
+          jquery: "../jquery/jquery-2.2.4"
         }
       });
       require(['kendo.grid'], function () {
