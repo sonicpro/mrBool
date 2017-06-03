@@ -9,6 +9,14 @@
     <link rel="stylesheet" type="text/css" href="../styles/kendo.common.patched.css">
     <link rel="stylesheet" type="text/css" href="../Less/Theme1/Kendo/kendo.template.css">
     <link rel="stylesheet" type="text/css" href="../Less/Theme1/Kendo/kendo.customized.css">
+    <style>
+      .demo-section
+      {
+        width: 660px;
+        padding: 30px;
+        text-align: center;
+      }
+    </style>
   </head>
   <body>
     <div id="container" class="demo-section">
@@ -16,5 +24,28 @@
       <br />
       About <a href="#" title="Some examples on using Kendo UI">Kendo UI</a>
     </div>
+    <script>
+      require.config({
+        baseUrl: "../js/Kendo",
+        paths: {
+          jquery: "../jquery/jquery-2.2.4"
+        }
+      });
+
+      require(['kendo.tooltip'], function() {
+        $('#container').kendoTooltip({
+          filter: "a[title]",
+          position: "right",
+          height: "35px",
+          width: "250px",
+          showOn: "click",
+          autoHide: true,
+          content: function (e) {
+            var target = e.target;
+            return target.attr('href');
+          }
+        });
+      });
+    </script>
   </body>
 </html>
