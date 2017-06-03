@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Multiselect</title>
+    <script type="text/javascript" src="../js/RequireJS/require.js"></script>
+    <script type="text/javascript" src="../js/Kendo/kendo.multiselect.js"></script>
+    <script type="text/javascript" src="../js/Kendo/kendo.list.patched.js"></script>
+    <script type="text/javascript" src="../js/Kendo/kendo.core.patched.js"></script>
+    <!-- jQuery script is only loaded explicitly for the console.js initialization. -->
+    <script type="text/javascript" src="../js/jquery/jquery-2.2.4.js"></script>
+    <script type="text/javascript" src="../js/shared/console.js"></script>
+    <link rel="stylesheet" type="text/css" href="../styles/kendo.common.patched.css">
+    <link rel="stylesheet" type="text/css" href="../Less/Theme1/Kendo/kendo.template.css">
+    <link rel="stylesheet" type="text/css" href="../Less/Theme1/Kendo/kendo.customized.css">
+    <style>
+      #main
+      {
+        width: 30%;
+        margin: 15px;
+      }
+      #fruitDiv
+      {
+        margin: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="main">
+      <select id="languages">
+        <option>C#</option>
+        <option>Java</option>
+        <option>JavaScript</option>
+        <option>HTML5</option>
+        <option>jQuery</option>
+        <option>jQuery UI</option>
+        <option>Knockout JS</option>
+        <option>C++</option>
+        <option>SQL</option>
+        <option>ASP.NET</option>
+        </select>
+    </div>
+    <div id="fruitDiv">
+      <select id="fruit"></select>
+    </div>
+    <div>
+      <button id="getItems" class="k-button">Get Items</button>
+    </div>
+    <div class="demo-section">
+      <h3 class="title">Console log</h3>
+      <div class="console"></div>
+    </div>
+    <script>
+      require.config({
+        baseUrl: "../js/Kendo",
+        paths: {
+          jquery: "../jquery/jquery-2.2.4"
+        }
+      });
+
+      require(['kendo.multiselect'], function() {
+        $('#languages').kendoMultiSelect({
+          animation: { // Unfortunately for the multiselect this neither do work.
+            open: {
+              effects: "faideIn",
+              duration: 400,
+            },
+            close: {
+              effects: "faideOut",
+              duration: 400,
+            }
+          }
+        });
+
+        var items = [
+           { text: "Apple", value: "Apple" },
+           { text: "Orange", value: "Orange" },
+           { text: "Banana", value: "Banana" },
+           { text: "Lemon", value: "Lemon" }
+        ];
+        $('#fruit').kendoMultiSelect({
+          dataTextField: "text",
+          dataValueField: "value",
+          dataSource: items,
+          placeholder: "select a fruit",
+          maxSelectedItems: 2,
+          select: onSelect,
+          change: onChange
+        });
+
+        $('#getItems').click(function() {
+          var fruits = $('#fruit').kendoMultiSelect().data("kendoMultiSelect");
+          alert(fruits.value());
+        });
+      });
+
+      function onSelect(e) {
+        var dataItem = this.dataSource.view()[e.item.index()];
+        kendoConsole.log("event :: select (" + dataItem.text + " : " + dataItem.value + ")");
+      }
+
+      function onChange(e) {
+        kendoConsole.log("event: change");
+      }
+    </script>
+  </body>
+</html>
