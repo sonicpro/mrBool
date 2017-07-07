@@ -15,6 +15,28 @@
       Regarding <a href="#" title="Here is some details on HTML5">HTML5</a>
       <br />
       About <a href="#" title="Some examples on using Kendo UI">Kendo UI</a>
+      <img src="https://demos.telerik.com/kendo-ui/content/web/foods/1.jpg" alt="No.1 product image" />
     </div>
+
+    <script type="application/javascript">
+      require.config({
+        baseUrl: "../js/Kendo",
+        paths: {
+          jquery: "../jquery/jquery-2.2.4"
+        }
+      });
+
+      require(["kendo.tooltip"], function () {
+        $("#container").kendoTooltip({
+          filter: "img",
+          position: "right",
+          height: "35px",
+          autoHide: true,
+          content: function (e) {
+            return e.target.attr("alt");
+          }
+        });
+      });
+    </script>
   </body>
 </html>
