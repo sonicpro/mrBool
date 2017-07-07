@@ -24,20 +24,14 @@
       About <a href="#" title="Some examples on using Kendo UI">Kendo UI</a>
       <img src="https://demos.telerik.com/kendo-ui/content/web/foods/1.jpg" alt="No.1 product image" />
     </div>
-<<<<<<< HEAD
 
     <script type="application/javascript">
-=======
-    <script>
->>>>>>> e4d071f9685b18a4d6aaf487ab59cd334665233d
       require.config({
         baseUrl: "../js/Kendo",
         paths: {
           jquery: "../jquery/jquery-2.2.4"
         }
       });
-
-<<<<<<< HEAD
       require(["kendo.tooltip"], function () {
         $("#container").kendoTooltip({
           filter: "img",
@@ -46,19 +40,6 @@
           autoHide: true,
           content: function (e) {
             return e.target.attr("alt");
-=======
-      require(['kendo.tooltip'], function() {
-        $('#container').kendoTooltip({
-          filter: "a[title]",
-          position: "right",
-          height: "35px",
-          width: "250px",
-          showOn: "click",
-          autoHide: true,
-          content: function (e) {
-            var target = e.target;
-            return target.attr('href');
->>>>>>> e4d071f9685b18a4d6aaf487ab59cd334665233d
           }
         });
       });
