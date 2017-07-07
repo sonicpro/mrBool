@@ -4,11 +4,18 @@
     <meta charset="utf-8">
     <title>Tooltip</title>
     <script type="text/javascript" src="../js/RequireJS/require.js"></script>
-    <script type="text/javascript" src="../js/Kendo/kendo.tooltip.js"></script>
     <script type="text/javascript" src="../js/Kendo/kendo.core.patched.js"></script>
     <link rel="stylesheet" type="text/css" href="../styles/kendo.common.patched.css">
     <link rel="stylesheet" type="text/css" href="../Less/Theme1/Kendo/kendo.template.css">
     <link rel="stylesheet" type="text/css" href="../Less/Theme1/Kendo/kendo.customized.css">
+    <style>
+      .demo-section
+      {
+        width: 660px;
+        padding: 30px;
+        text-align: center;
+      }
+    </style>
   </head>
   <body>
     <div id="container" class="demo-section">
@@ -17,8 +24,12 @@
       About <a href="#" title="Some examples on using Kendo UI">Kendo UI</a>
       <img src="https://demos.telerik.com/kendo-ui/content/web/foods/1.jpg" alt="No.1 product image" />
     </div>
+<<<<<<< HEAD
 
     <script type="application/javascript">
+=======
+    <script>
+>>>>>>> e4d071f9685b18a4d6aaf487ab59cd334665233d
       require.config({
         baseUrl: "../js/Kendo",
         paths: {
@@ -26,6 +37,7 @@
         }
       });
 
+<<<<<<< HEAD
       require(["kendo.tooltip"], function () {
         $("#container").kendoTooltip({
           filter: "img",
@@ -34,6 +46,19 @@
           autoHide: true,
           content: function (e) {
             return e.target.attr("alt");
+=======
+      require(['kendo.tooltip'], function() {
+        $('#container').kendoTooltip({
+          filter: "a[title]",
+          position: "right",
+          height: "35px",
+          width: "250px",
+          showOn: "click",
+          autoHide: true,
+          content: function (e) {
+            var target = e.target;
+            return target.attr('href');
+>>>>>>> e4d071f9685b18a4d6aaf487ab59cd334665233d
           }
         });
       });
