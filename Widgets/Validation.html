@@ -140,10 +140,15 @@
         }
       });
 
-      require(['kendo.validator', 'kendo.combobox'], function () {
-        $('#search').kendoComboBox({
-          dataSource: data,
-          separator: ", "
+      require(['kendo.validator', 'kendo.dropdownlist'], function () {
+        $('#search').kendoDropDownList({
+          dataSource:  [
+              { Name: "Parent1", Id: 1 },
+              { Name: "Parent2", Id: 2 }
+          ],
+          dataTextField: "Name",
+          dataValueField: "Id",
+          value: "2"
         });
         var validator = $('#courses').kendoValidator().data('kendoValidator');
         var status = $('.status');
