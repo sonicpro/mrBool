@@ -31,8 +31,8 @@
 
           require(['kendo.datepicker'], function () {
             $('#datepicker1').kendoDatePicker({
-              start: "century", // is lower than depth, "depth" won't be applied. "century" is lover than "decade", "decade" is lower than "year" ext/
-              depth: "year"	// "depth does not apply" means that there is no restriction on drill down; you can reach "month" level.
+              start: "century", // if lower than depth, "depth" won't be applied. "year" is lover than "decade", "decade" is lower than "century" etc.
+              depth: "year"     // "depth won't be applied" means that there won't be restriction on drill down; you could reach "month" level.
             });
             $('#datepicker2').kendoDatePicker({
               start: "year",
